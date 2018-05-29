@@ -156,7 +156,7 @@ document.body // zwraca wszystkie elemnty / znaczniki znajdujące się w sekcji 
 // będącego rodzicem innych, w nim znajdujących się znaczników, jest więcej, np.:
 document.forms // zwraca elementy znajdujące się w formularzu, możemy odnieść się do konkretnego formularza
 // poprzez ID. Np.:
-<form id="frm1" action="/action_page.php">
+<form id="frm1" action="/action_page.php"> // mamy w kodzie formularz
   First name: <input type="text" name="fname" value="Donald"><br>
   Last name: <input type="text" name="lname" value="Duck"><br><br>
   <input type="submit" value="Submit">
@@ -179,17 +179,95 @@ element4.appendChild(nowyElement); // dodaje do sekcji nowy element / znacznik.
 // Tak jak wcześniej było mówione, ten nowy element / znacznik musi zostać wczęsniej
 // stworzony za pomocą document.createElement(element), np.:
 btn = document.createElement("BUTTON"); // najpierw tworzymy "wirtualnie" znacznik typu "BUTTON"
-document.body.appendChild(btn); // nastepnie dodajemy go do sekcji BODY, należy pamietać,
-// że zostanie dodany on na samym dole, jako ostatni znacznik na stronie.
+document.body.appendChild(btn); // nastepnie dodajemy go do sekcji BODY.
+// Należy pamietać, że zostanie dodany on na samym dole, jako ostatni znacznik na stronie.
 // Oczywiście musimy pamiętać również o nadaniu tekstu na nasz przycisk itd.
 
 element4.removeChild(elementIstniejący); // usuwa z sekcji / listy istniejący element / znacznik.
 // Oczywiście ten element który będziemy chcieli usunąć musi istnieć na naszej stronie.
-Na przykład.:
-<ul id="myList"><li>Coffee</li><li>Tea</li><li>Milk</li></ul> // stworzyliśmy nieuporządkowaną listę o ID "myList"
+// Na przykład.:
+<ul id="myList"><li>Coffee</li><li>Tea</li><li>Milk</li></ul> // mamy w kodzie nieuporządkowaną listę o ID "myList"
 var list = document.getElementById("myList") // dostęp do niej przypisyujemy do zmiennej
 element4.removeChild(list) // usuwamy ją z sekcji body
 
 element4.document.replaceChild(nowyElement, elementIstniejący) // zastępuje istenijący element / znacznik
 // nowym. Oczywiście najepierw musimy stworzyć wirtualnie nowy element którym bedziemy chcieli zastapić
-// elementu już istniejący w sekcji.
+// elementu już istniejący w sekcji. Podobna sytuacja tutaj wystepuje co w przypakdu tworzenia nowego elementu / znacznika.
+// Róznica jest tylko taka, że w tym przypadu nie zwiększy się ilość elementów na stronie, tylko jeden bedzie
+// podmieniony w stosunku do oryginalnej wersji, np.:
+<p id="oryginalny">Ten akapit zostanie podbmieniony innym</p> // mamy w kodzie akapit oryginalny
+var elmnt = document.createElement("p"); // tworzymy "wirtualnie" nowy akapit
+var textnode = document.createTextNode("AKAPIT PODMIENIONY"); // tworzymy zmienną z treścia która będzie wyświetlana
+// w tym nowo tworzonym akapicie
+elmnt.appendChild(textnode); // wstrzykujemy do nowo stworzonego akapitu treść
+document.body.replaceChild(elmnt, oryginalny); // podmieniamy stary akapit nowym akapitem razem z treścią.
+// Należy pamiętać, że za pomocą HTML DOM możemy też nadawać ID nowym elementom które
+// zastępują stare elementy itd. Po prostu pamiętajmy, żeby tworzyć elementy które
+// będą zastępowały inne już kompletne.
+
+////////////////////////////
+// Reakcja na zdarzenia
+
+// Ta cecha HTML DOM jest bardzo użyteczną funkcją. Pozwala na wywołanie określonego przez nas kodu
+// JavaScript gdy nastapi jakieś zdarzenie, głównie wywołane przez użytkownika.
+// Na przykład:
+// gdy użytkownik kliknie w przycisk,
+// gdy użytkownik najedzie myszką na jakiś element HTML,
+// gdy użytkownik wprowadzi tekst w pole tekstowe,
+// gdy użytkownik naciśnie przycisk na klawiaturze,
+// gdy załaduje się strona,
+// gdy załaduje się obrazek na stronie.
+// itd. Ilość możliwych zdarzeń jakie mogą być rejestrowane w celu odpowiedniej reakcji
+// przez JavaScript jest bardzo dużo. Na stronie w3school znajduje się lista z możliwymi zdarzeniami.
+
+// W celu wywołania kodu JavaScript w momencie kiedy nastąpi odpowiednie zdarzenie musimy
+// umieścić w atrybucie interesującego nas elementu / znacznika HTML odpowiedni atrybut.
+
+// Ogólna postać atrybutu:
+
+eventHandler=JavaScriptCode
+
+// UWAGA !!!
+// Możemy po znaku równa się napisać cały kod JavaScript który ma się wykonać.
+// Jednak najlepszym sposobem będzie po prostu stworzyć w pliku z kodem JS
+// ospowiednią funkcę która będzie wykonywała dalszy kod jaki chcemy aby się wykonał
+// podczas zdarzenia. Warto kozystać z możliwości przekazywania do tej naszej
+// funkcji argumentów. Mogą być nimi właściwości, atrybuty znacznika HTML na którym
+// wykonujemy zdarzenie. To tylko przykład oczywiście.
+
+// Przykład:
+<h1 onclick="this.innerHTML = 'Ooops!'">Kliknij w ten tekst!</h1> // Na naszej stronie
+// będzie wyświeltony nagłówek z treścią "Kliknij w ten tekst!". Po kliknięciu
+// w tekst, a tak naprawde w nagłówek, zostanie wstawiony nowy tekst: "Ooops!"
+
+// Przykład z użyciem funkcji:
+<h1 onclick="zmienTekst(this)">Kliknij w ten tekst!</h1> // po kliknięciu w nagłówek
+// wywołujemy funkcję i w argumencie funkcji przekazujemy ten obiekt (this) czyli "H1"
+// a wraz z nim wszystkie jego argumenty i właściwości itd.
+// dzięki którym będziemy mogli to wszystko zmieniać.
+function zmienTekst(tag){ // funkcja wywoływana po kliknieciu w nagłówek
+	tag.innerHTML = "Ooops!"; // zamiana treści nagłówka za pomocą metody innerHTML
+}
+
+// Przykład z uzyciem przycisku do wywoływania zdarzeń:
+<button onclick="displayDate()">The time is?</button> // przycisk z atrybutem
+// klikniecia i wywoływaniem funkcji "displayDate()"
+<p id="data"></p> // pusty akapit w który będziemy wstrzykiwać treść za pomocą innerHTML
+function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
+	document.getElementById('data').innerHTML = Date(); // umieszcze w pustym akapicie
+	// aktualnej daty
+}
+
+// Przykład z NIEbezpośrednim umieszczeniem atrybutu zdarzenia w elemencie / znaczniku HTML.
+// Dzięki HTML DOM mamy możliwość dodawania przy użyciu JavaScript zdarzeń do
+// elementu / znacznika HTML. Po prostu dostajemy się do elementu za pomocą znanych
+// nam metod, a później za pomocą innej metody dodajemy zdarzenie:
+<button id="btn">The time is?</button> // przycisk tylko z atrybutem ID
+<p id="data"></p> // pusty akapit w który będziemy wstrzykiwać treść za pomocą innerHTML
+document.getElementById("btn").onclick = displayDate(); // dostępo do przrzycisku i
+// przy użyciu metody "onclick" dopisanie mu atrybutu zdarzenia.
+// JAK WIDAĆ ROBIMY TO POŚREDNIO.
+function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
+	document.getElementById('data').innerHTML = Date(); // umieszcze w pustym akapicie
+	// aktualnej daty
+}
