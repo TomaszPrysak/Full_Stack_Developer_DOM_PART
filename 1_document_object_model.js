@@ -45,11 +45,14 @@ colnsole.dir(domcument)
 // za pomocą JavaScript.
 
 ////////////////////////////
+////////////////////////////
 // Dostęp do istniejących znaczników HTML i manipulacja nimi
 
 // Metody HTML DOM to akcje które można wykonać na jakimkolwiek elemencie HTML.
 // Jak na przykład dodawanie lub usuwanie treści wysietlanych na stronie poprzez
 // elementy HTML, bądź zmiana atrybutów tych elementów znajdujących się wewnątrz znaczników.
+
+// Dostęp do elementu jednocześnie czyni z niego obiekt.
 
 // UWAGA !!!
 // Przyczym, to bardzo ważne, że ten znacznik który będzie wyświetlać
@@ -61,21 +64,36 @@ colnsole.dir(domcument)
 document.getElementById('#ID'); // w miejscu ID podajemy identyfokator jaki nadaliśmy znacznikowi podczas tworzenia kodu HTML,
 // wiadomo, że ID jest unikatowe i może być przyporządkowane tylko do jdnego znacznika HTML.
 
-document.getElementsByClassName('#CLASS'); // nazwa klasy nadanej znacznikowi podczas tworzenia kodu HTML,
-// klasa z kolei może być przyporządkowana do kilku znaczników.
+document.getElementsByClassName('#CLASS'); // w miejscu CLASS podanejmy nazwę klasy
+// nadanej znacznikowi podczas tworzenia kodu HTML, klasa z kolei może być przyporządkowana do kilku znaczników.
+// Metoda ta zwraca kolekcje / listę obiektów, tj. znaczników którym została nadana ta sama klasa.
+// Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
+// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
+// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
 
 document.getElementsByTagName('#TAG'); //poprzez tą metodę odwołujemy się ogólnie do znacznika HTML,
 // jezeli jest tych znaczników kilka w kodzie HTML to za jendnym razem odwołamy się do wszystkich.
 // A dokładniej to metoda ta zwraca nam listę wszystkich tych samych znaczników.
 // Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
-// w tej liście pod indeksem 0. Na przykład:
+// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
+// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
+// Na przykład:
 <p>Czesc</p>
 <p>Jestem Tomek</p>
 <p>Lubię motocykle</p>
 var x = document.getElementsByTagName("p");
 y[2].innerHTML == "Lubię motocykle" // odnośimy się do zawartości 3 z kolei akapitu.
 
-document.querySelectorAll("znacznik.ID/className/typ/atrybut/war"); // UZUPEŁNIĆ
+document.querySelectorAll("znacznik.ID/className/typ/atrybut/war"); // metoda ta
+// pozwala dostać się do elementu HTML za pomoca formuly jaka jest używana
+// w plikach CSS, tj.:
+znacznikHTML.ID/className/typ/atrybut/war
+p.intro
+// Metoda ta zwraca kolekcje / listę obiektów, tj. znaczników którym została nadana ta sama klasa / ID itd.
+// Po prostu tak jakbyśmy je znajdowali w CSS.
+// Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
+// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
+// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
 
 // Powyższe metody pozwalają na dostęp do elementów HTML, ale aby coś z nimi zrobić
 // musimy wywołać na nich kolejne metody.
@@ -113,6 +131,18 @@ element3[0].src = "fiolek.jpg" // podmieni nazwę pliku z obrazkiem, a co za tym
 // do wszystkich właściwości poprzez metody np.: name, length.
 // Wykorzystywany jest na przykład zo zmiany wielkości obrazka po najechaniu myszką,
 // bądź podmiany obrazka na inny poprzez zmianę adresu obrazka w src itd.
+// Bardzo ważnym atrybutem jest "value". Za jego pomocą możemy przechwycić
+// z pola formularza wartość którą wpisał użytkownik i dalej coś z nią robić,
+// na przykład:
+Enter your name: <input type="text" id="fname" onchange="myFunction()"> // pole formularza
+// do wpisywania przez użytkownika, atrybutem jest zdarzenie które reaguje na zmianę,
+// w tym wypadku zmiana polega na wpisaniu czegoś do pola formularza i wywołuje funkcję myFunction()
+function myFunction() { // funkcja wywoływana przez atrybut w polu formularza
+    var x = document.getElementById("fname"); // zapisanie w zmiennej obiektu jakim jest pole formularza
+    x.value = x.value.toUpperCase(); // zamiana wartości wpisanej przez użytkownika
+		// czyli liter na wielkie
+}
+
 element3.setAttribute(#attribute, #value) // inny sposób na dostanie się do właściwośi
 // znacznika i dokonanie w nim jakiejś zmiany.
 
@@ -123,8 +153,22 @@ element1.style.property = new style // zmiana stylu, formatowania jakiegoś znac
 <p id="a">Uczymy sie HTML DOM</p>
 document.getElementById("a").style.color = "blue";
 
+document.jakiśTagKtóryJestObsługiwany // zwraca nam kolekcję / listę obiektów dzieci
+// wchodzących w skład danego obiektu będącego ich rodzicem. Na przykład jeżeli
+// odwołamy się do:
+document.body // to zwróci nam kolekcję / liste obiektów wchodziących w skład znacnzika HTML BODY.
+// Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
+// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
+// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
+// Oczywiście możemy się do nich później zwracać za pomocą numerów indeksów.
+document.forms["ID"] // zwróci kolekcję / liste obiektów wchodziących w skład formularza
+// o jakimś konkretnym ID. W przypadku formularza to będą to wszystkie obiekty wchodzące w skład
+// znacznika FORM.
+ITD. listę
+
 // Zastosowania w konkretnych przypadkach znajdują sie na stronach min. w3school
 
+////////////////////////////
 ////////////////////////////
 // Dodawanie i usuwanie znaczników HTML
 
@@ -206,6 +250,7 @@ document.body.replaceChild(elmnt, oryginalny); // podmieniamy stary akapit nowym
 // będą zastępowały inne już kompletne.
 
 ////////////////////////////
+////////////////////////////
 // Reakcja na zdarzenia
 
 // Ta cecha HTML DOM jest bardzo użyteczną funkcją. Pozwala na wywołanie określonego przez nas kodu
@@ -226,27 +271,38 @@ document.body.replaceChild(elmnt, oryginalny); // podmieniamy stary akapit nowym
 // Ogólna postać atrybutu:
 
 eventHandler=JavaScriptCode
+onlick=this.innerHTML = "Wstawiany tekst";
 
-// UWAGA !!!
+// Możemy rownież za pomocą HTML DOM i JavaScript dodać do elementu / znacznika odpowiednie zdarzenie.
+// Dostajemy sie do niego za pomocą znanych już metod a nastepnie za pomocą metod
+// których nazwy pochodzą od rodzaju zdarzenia i po znaku równa sie dodajemy kod JavaScript
+// wykonywany podczas zdarzenia.
+
+// Ogólna postać dodawania zdarzenia za pomocą metod:
+
+document.getElementById("ID").eventHandler = JavaScriptCode
+document.getElementById("ID").onfocus = this.style.background = "yellow";
+
 // Możemy po znaku równa się napisać cały kod JavaScript który ma się wykonać.
 // Jednak najlepszym sposobem będzie po prostu stworzyć w pliku z kodem JS
-// ospowiednią funkcę która będzie wykonywała dalszy kod jaki chcemy aby się wykonał
-// podczas zdarzenia. Warto kozystać z możliwości przekazywania do tej naszej
+// odpowiednią funkcję. Funkcję tę będziemy wywpływać po znaku równa sie w atrybutu zdarzenia
+// tak aby nie pisać całego kodu jaki ma się wykonać w momencie zdarzenia.
+// Kod ten będzie zapisany w funcko w pliku JS. Warto kozystać z możliwości przekazywania do tej naszej
 // funkcji argumentów. Mogą być nimi właściwości, atrybuty znacznika HTML na którym
 // wykonujemy zdarzenie. To tylko przykład oczywiście.
 
-// Przykład:
+// Przykład z umieszczeniem kodu JavaScript w atrybucie zdarzenia:
 <h1 onclick="this.innerHTML = 'Ooops!'">Kliknij w ten tekst!</h1> // Na naszej stronie
 // będzie wyświeltony nagłówek z treścią "Kliknij w ten tekst!". Po kliknięciu
-// w tekst, a tak naprawde w nagłówek, zostanie wstawiony nowy tekst: "Ooops!"
+// w tekst, a tak naprawde w nagłówek zostanie wstawiony nowy tekst: "Ooops!"
 
 // Przykład z użyciem funkcji:
 <h1 onclick="zmienTekst(this)">Kliknij w ten tekst!</h1> // po kliknięciu w nagłówek
 // wywołujemy funkcję i w argumencie funkcji przekazujemy ten obiekt (this) czyli "H1"
-// a wraz z nim wszystkie jego argumenty i właściwości itd.
+// a wraz z nim wszystkie jego argumenty i właściwości itd.,
 // dzięki którym będziemy mogli to wszystko zmieniać.
-function zmienTekst(tag){ // funkcja wywoływana po kliknieciu w nagłówek
-	tag.innerHTML = "Ooops!"; // zamiana treści nagłówka za pomocą metody innerHTML
+function zmienTekst(obj){ // funkcja wywoływana po kliknieciu w nagłówek
+	obj.innerHTML = "Ooops!"; // zamiana treści nagłówka za pomocą metody innerHTML
 }
 
 // Przykład z uzyciem przycisku do wywoływania zdarzeń:
@@ -258,10 +314,7 @@ function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
 	// aktualnej daty
 }
 
-// Przykład z NIEbezpośrednim umieszczeniem atrybutu zdarzenia w elemencie / znaczniku HTML.
-// Dzięki HTML DOM mamy możliwość dodawania przy użyciu JavaScript zdarzeń do
-// elementu / znacznika HTML. Po prostu dostajemy się do elementu za pomocą znanych
-// nam metod, a później za pomocą innej metody dodajemy zdarzenie:
+// Przykład z niebezpośrednim umieszczeniem atrybutu zdarzenia w elemencie / znaczniku HTML:
 <button id="btn">The time is?</button> // przycisk tylko z atrybutem ID
 <p id="data"></p> // pusty akapit w który będziemy wstrzykiwać treść za pomocą innerHTML
 document.getElementById("btn").onclick = displayDate(); // dostępo do przrzycisku i
@@ -270,4 +323,59 @@ document.getElementById("btn").onclick = displayDate(); // dostępo do przrzycis
 function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
 	document.getElementById('data').innerHTML = Date(); // umieszcze w pustym akapicie
 	// aktualnej daty
+}
+
+// Bardzo pomocnym zdarzeniem jest wykrycie najechania / zjechania myszą (bez klikania)
+// na element / znacznik HTML. Przykład:
+<h2 onmouseover="mOver(this)" onmouseout="mOut(this)">Najedź na mnie</h2> // nagłówek 2 stopnia
+// z atrybutem najechania i zjechania i wywołania funkcji odpowiednio mOver i mOut,
+// z jednoczesnym przekazaniem do funckji argumentu jakim jest ten obiekt (this) czyli H2.
+// a wraz z nim wszystkie jego argumenty i właściwości itd.,
+// dzięki którym będziemy mogli to wszystko zmieniać.
+function mOver(obj) { // funkcja wywoływana podczas najechania myszką na nagłówek
+    obj.innerHTML = "Blebleble" // podmiana treści w nagłówku
+}
+function mOut(obj) { // funkcja wywoływana podczas zjechania myszą z nagłówka
+    obj.innerHTML = "Najedź na mnie" // podmiana treści w nagłówku
+}
+
+// Kolejnym pomocnym zdarzeniem jest naciśniecię przycisku myszki / puszczenie
+// przycisku myszki na elemencie / znaczniku HTML. Poniższy przykład jest analogiczny
+// do tego z najechaniem i zjechaniem myszki, więc nie będzie opisywany.
+// Przykład:
+<h2 onmousedown="mDown(this)" onmouseup="mUp(this)">Kliknij mnie i przytrzymaj</h2>
+function mDown(obj) {
+    obj.innerHTML = "aaaa To boli ;( Puść mnie, proszę !!!";
+}
+function mUp(obj) {
+    obj.innerHTML="Dziękuje ;*";
+}
+// Przykład podobny jak powyższy tylko z podmiana obrazka przy naciśnięciu i przytrzymaniu przycisku
+// oraz puszczeniu przycisku:
+<img id="myimage" onmouseover="lighton()" onmouseout="lightoff()" src="zarowka_wylaczona.gif" width="100" height="180" />
+function lighton() {
+    document.getElementById('myimage').src = "zarowka_wlaczona.gif";
+}
+function lightoff() {
+    document.getElementById('myimage').src = "zarowka_wylaczona.gif";
+}
+
+// Pomocnym zdarzeniem jest również, zdarzenie polegające na wejściu na stronę
+// przez użytkownika bądź jej opuszczeniu.
+// Zdarzenie wejści na stronę (onload) może być wykorzystywane do sprawdzenia
+// z jakiej przeglądarki korzysta użytkownik i na podstawie tej informacji załadowanie
+// wersji strony przystosowanej do takiej przeglądarki. To tylko przykład.
+// TEN TYP ZDARZENIA UMIESZCZAMY JAKO ARGUMENT ZNACZNIKA BODY.
+// Zdarzenia onload i unload można wykorzystywac do obsługi plików cookie.
+// Przykład z cookie:
+<body onload="checkCookies()">
+<p id="demo"></p>
+function checkCookies() {
+    var text = "";
+    if (navigator.cookieEnabled == true) {
+        text = "Cookies are enabled.";
+    } else {
+        text = "Cookies are not enabled.";
+    }
+    document.getElementById("demo").innerHTML = text;
 }
