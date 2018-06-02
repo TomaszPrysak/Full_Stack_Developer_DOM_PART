@@ -87,9 +87,11 @@ y[2].innerHTML == "Lubię motocykle" // odnośimy się do zawartości 3 z kolei 
 document.querySelectorAll("znacznik.ID/className/typ/atrybut/war"); // metoda ta
 // pozwala dostać się do elementu HTML za pomoca formuly jaka jest używana
 // w plikach CSS, tj.:
-znacznikHTML.ID/className/typ/atrybut/war
+znacznikHTML(.ID/className/typ/atrybut/war) // ID, CLASSNAME podajemy jeżeli zostały one
+// nadane interesującym nas znacznikom.
 p.intro
-// Metoda ta zwraca kolekcje / listę obiektów, tj. znaczników którym została nadana ta sama klasa / ID itd.
+// Metoda ta zwraca kolekcje / listę obiektów, tj. znaczników (bez klasy lub
+// którym została nadana ta sama klasa / ID itd.)
 // Po prostu tak jakbyśmy je znajdowali w CSS.
 // Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
 // w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
@@ -115,9 +117,10 @@ document.getElementById("x").innerHTML = "Nie cześć i nie jestem Tomkiem"
 // Wkorzystywany właśnie po to aby dodać, zmienić jakiś tekst na strone poprzez wstrzyknięcie tego tekstu
 // za pomocą JavaScript i HTML DOM.
 
-element2.attribute(.property) = nowa wartość // metoda attribute pozwala dostać się do
+element2.attribute(.property) = nowa wartość // metoda ta pozwala dostać się do
 // właściwości jakie posiada znacznik HTML i manipulować nimi.
-// Mając na myśli właściwości to są to wszystkie atrybuty które nadajemy znacznikowi
+// Oczywiście w miejscu słowa "attribute" wpisujemy odpowiedni atrybut znacznika HTML.
+// Mając na myśli atrybut to są to wszystkie pola które nadajemy znacznikowi
 // i znajdują się one jeszcze pomiędzy oznaczeniem znacznika a nawiasem ostrym,
 // np.:
 <img id="myImg" alt="Flower" src="fikus.jpg">
@@ -129,7 +132,7 @@ element3[0].src = "fiolek.jpg" // podmieni nazwę pliku z obrazkiem, a co za tym
 // Należy dodać, że jeżeli zamiast konkretnej właściwości wybierzemy ogólnie słówko
 // "attribute" odwołujące się do wszystkich właściwości naraz to potem mamy możliwość odwołania się
 // do wszystkich właściwości poprzez metody np.: name, length.
-// Wykorzystywany jest na przykład zo zmiany wielkości obrazka po najechaniu myszką,
+// Wykorzystywany jest na przykład do zmiany wielkości obrazka po najechaniu myszką,
 // bądź podmiany obrazka na inny poprzez zmianę adresu obrazka w src itd.
 // Bardzo ważnym atrybutem jest "value". Za jego pomocą możemy przechwycić
 // z pola formularza wartość którą wpisał użytkownik i dalej coś z nią robić,
@@ -148,10 +151,25 @@ element3.setAttribute(#attribute, #value) // inny sposób na dostanie się do w�
 
 element1.style.property = new style // zmiana stylu, formatowania jakiegoś znacznika HTML.
 // W ten sposób dostajemy się do formatowania CSS i zmieniamy, nadajemy itd kolejne formatowania.
-// Najpierw podajemy style, co znaczy, że chcemy ustawić formatowanie, a później
-// do jakiego elementu formatowania się odnosimy, np.:
-<p id="a">Uczymy sie HTML DOM</p>
-document.getElementById("a").style.color = "blue";
+// "property" wyglada tak jak w normalnym pliku CSS.
+// Najpierw podajemy "style", co znaczy, że chcemy ustawić formatowanie, a później
+// do jakiego elementu formatowania się odnosimy. Na przykład jeżeli chcemy
+// ustawić / zmienić kolor tła to formuła bedzie nastepjująca:
+<p id="demo">Uczymy sie HTML DOM</p>
+document.getElementById("demo").style.backgroundColor = "yellow";
+// Ta cześć polocenie po "..style." jest właśnie zapisywan tak jak w ustawianiu właściwości
+// formatowania w pliku CSS, z tą różnicą, że tam mamy ":" zamianas "=".
+// Bardzo ważne jest też to, że właściwość zapisujemy pomiędzy cudzysłowem, np.: "yellow".
+// Kolejny przykład, nadanie tekstowi wyśrodkowania:
+document.getElementById("demo").style.textAlign = "center";
+// Bardzo ciekawą możliwościa jaką daje HTML DOM, jest tworzenie prostych animacji.
+// Na przykład tworzymy DIVa o jakichś rozmiarachi pewnym kolorze.
+// Następnie za pomocą HTML DOM dostajemy sie do jego właściwości odpowiedzialnych za styl,
+// a dokładniej do parametrów położenia TOP, LEFT.
+// Wszystko to umieszczamy w funckji uruchamianej na zdarzenie ONCLICK jako atrybut przycisku BUTTON.
+// Jednocześnie w funkcji tej w pętli inkrementujemy zmienna którą podstawiamy jako
+// wartośći połozenia i jezeli dojdzie ona do zadanej jakiejś wartości to kończymy działanie
+// pętli.
 
 document.jakiśTagKtóryJestObsługiwany // zwraca nam kolekcję / listę obiektów dzieci
 // wchodzących w skład danego obiektu będącego ich rodzicem. Na przykład jeżeli
@@ -271,7 +289,7 @@ document.body.replaceChild(elmnt, oryginalny); // podmieniamy stary akapit nowym
 // Ogólna postać atrybutu:
 
 eventHandler=JavaScriptCode
-onlick=this.innerHTML = "Wstawiany tekst";
+onlick = "Wstawiany tekst";
 
 // Możemy rownież za pomocą HTML DOM i JavaScript dodać do elementu / znacznika odpowiednie zdarzenie.
 // Dostajemy sie do niego za pomocą znanych już metod a nastepnie za pomocą metod
@@ -280,7 +298,7 @@ onlick=this.innerHTML = "Wstawiany tekst";
 
 // Ogólna postać dodawania zdarzenia za pomocą metod:
 
-document.getElementById("ID").eventHandler = JavaScriptCode
+document.getElementById("ID")."eventHandler" = JavaScriptCode
 document.getElementById("ID").onfocus = this.style.background = "yellow";
 
 // Możemy po znaku równa się napisać cały kod JavaScript który ma się wykonać.
@@ -379,3 +397,87 @@ function checkCookies() {
     }
     document.getElementById("demo").innerHTML = text;
 }
+
+// Event listener (nasłuchiwacz zdarzeń)
+
+// Event Listener jest bardzo podobnym roziwązaniem do metod pochodzących od
+// słowa zdarzenia na dodawania / usuwanie z elementów / znaczników HTML zdarzeń.
+// A w zasadzie Event Listener jest również metodą do dodawania / usuwania zdarzeń z
+// elementów / znaczników HTML z poziomu HTML DOM.
+
+// A więc mamy metodę do dodawania zdarzeń do obiektu. Jej składnia jest nastepująca:
+
+element.addEventListener(event, functionName, useCapture);
+event // rodzaj zdarzenia jaki dodajemy.
+// UWAGA!!!
+// W przypadku dodawania zdarzenia przez addEventListener nie używamy w nazwie zdarzenia
+// prefixu "on". Zamiast "onclick" będzie "click".
+functionName // nazwa funkcji jaka ma być wywołana w momencie zajścia zdarzenia.
+// UWAGA 1!!!
+// Nazwe funkcji NIE kończymy znakiem otwarcie i zamknięcia "()".
+// UWAGA 2!!!
+// W przypadku dodawania zdarzenia przez addEventListener w drugim parametrze podajemy
+// nazwe funkcji. NIE mamy możliwości wpisania tutaj kodu JavaScript.
+// Podczas umieszczania zdarzeń jako atrybuty w znaczniku HTML bądź dodawania zdarzenia
+// za pomocą metody o nazwie zdarzenai to mielismy możliwość wpisania kody JavaScript.
+// W tym przypadku nie możemy.
+// UWAGA 3!!!
+// Jeżeli chcemy przekazać do funkcji jakieś parametry to w związku z tym, że
+// nie możemy pisać nazwy funkcji z nawiasami, a więc nie ma możliwości przekazywania
+// do niej parametrów to musimy wywołać ją w inny sposób. Oto ten sposób:
+function(){ functionName(p1, p2, ..); } // tą całość podstawiamy w miejsce gdzie
+// jest functionName.
+// UWAGA!!!
+// Powyższy zapis pozwala nam wówczas aby w nawiasie "{}" zamiast odwołania sie
+// do funkcji poprzez nazwę, możemy również zapisac kod JavaScript.
+useCapture // ten parametr jest wartością logiczną true / false i określa czy należy
+// używać propagacji zdarzeń typu bubbling czy capturing. Parametr ten jest opcjonalny.
+// Domyslnie jest false, czyli uzywana jest progpagacja typu bubbling.
+
+// Metoda addEventListener:
+// - dołącza obsługę zdarzeń do okreslonego elementu,
+// - dołącza obsługę zdarzeń do elementu bez nadpisywania istniejących procedur
+//   obsługi zdarzeń,
+// - może dodawać wiele procedur obsługi zdarzeń do jednego elementu,
+// - może dodawać wiele takich samych procedur obsługi zdarzeń do jednego elementu,
+//   np.: dwa zdarzenia kliknięcia,
+// - może dodawać zdarzenia do dowolnego obiektu DOM, nie tylko elementów HTML,
+//   na przykład do okna przeglądarki,
+// - metoda ta pozwala oddzielic kod JavaScript od znaczników HTML. Dzięki temu
+//   zyskujemy czytelniejszy kod,
+// - ułatwia kontrolowanie reakcji zdarzenia na propagację.
+
+// O propagacji zdarzeń.
+// Propagacja zdarzeń jest sposobem definiowania kolejności elementów w przypadku
+// wystąpienia zdarzenia. Jeśli mamy element P w elemencie DIV a zdarzenia są podpięte
+// zarówno do elementu P oraz DIV. Mogą to być zdarzenia róznego typu lub tego samego.
+// Użytkownik kliknie w element <p>, to które zdarzenie "kliknięcie" elementu powinno zostać obsłużone jako pierwsze?
+// Bubbling.
+// Podczas tego rodzaju propagacji zdarzenie w najbardziej wewnętrznym elemencie
+// jest obługiwane jako pierwsze, a nastepnie to które jest przypisane do zewnętrzego elementu.
+// W naszym przypadku najpierw wywołane zostanie zdarzenie przypisane do elementu P,
+// a dopiero późnije do elementu DIV.
+// Capturing.
+// Jest odwrotnością bubbling. Zdarzenie w najbardziej zewnętrznym elemencie jest
+// wykonywane jako pierwsze, a nastepnie to które jest przypisane do wewnętrznego elementu.
+// W naszym przypadku najpierw wywołane zostanie zdarzenie przypisane do elementu DIV,
+// a następnie to które zostało przypisane do elementu P.
+
+
+// I mamy też metodę do usuwania zdarzeń z obiektu. Jej składnia jest  następująca:
+
+element.removeEventListener("event", functionName);
+"event" // zapisany w cudzysłowniu rodzaj zdarzenia z którego chcemy usunąć
+// reakcje na zdarzenie.
+functionName // nazwa funkcji którą była reakcją na zdarzenie a teraz ją usuwamy ze zdarzenia.
+
+// UWAGA!!!
+// Niektóre przeglądarki nie obsługują metod
+addEventListener
+// oraz
+removeEventListener.
+// Aby jednak móc używać metod doających / usuwających zdarzenia, możemy użyć starszych metod:
+// - dodająca:
+element.attachEvent(event, function);
+// - usuwająca:
+element.detachEvent(event, function);
