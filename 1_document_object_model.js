@@ -28,7 +28,8 @@
 // Do każdego rodzica i dziecka w modelu DOM mamy dostęp za pomocą JavaScript,
 // przez co możemy go zmieniać bądź dodawać nowe dzieci rodzica.
 
-// Patrz obrazek Model_DOM.jpg
+// Patrz obrazek Model_DOM_tree_1.jpg lub Model_DOM_tree_2.gif.
+// Więcej w rozdziale "Węzły i relacje miedzy nimi".
 
 // Bardzo pomocnym narzędziem developerskim w poruszaniu się i możliwościach jakie
 // dają nam dane elementy strony w kontekście DOM jest polecenie:
@@ -96,6 +97,19 @@ p.intro
 // Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
 // w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
 // to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
+
+document.jakiśTagKtóryJestObsługiwany // zwraca nam kolekcję / listę obiektów dzieci
+// wchodzących w skład danego obiektu będącego ich rodzicem. Na przykład jeżeli
+// odwołamy się do:
+document.body // to zwróci nam kolekcję / liste obiektów wchodziących w skład znacnzika HTML BODY.
+// Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
+// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
+// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
+// Oczywiście możemy się do nich później zwracać za pomocą numerów indeksów.
+document.forms["ID"] // zwróci kolekcję / liste obiektów wchodziących w skład formularza
+// o jakimś konkretnym ID. W przypadku formularza to będą to wszystkie obiekty wchodzące w skład
+// znacznika FORM.
+// ITD.
 
 // Powyższe metody pozwalają na dostęp do elementów HTML, ale aby coś z nimi zrobić
 // musimy wywołać na nich kolejne metody.
@@ -170,19 +184,6 @@ document.getElementById("demo").style.textAlign = "center";
 // Jednocześnie w funkcji tej w pętli inkrementujemy zmienna którą podstawiamy jako
 // wartośći połozenia i jezeli dojdzie ona do zadanej jakiejś wartości to kończymy działanie
 // pętli.
-
-document.jakiśTagKtóryJestObsługiwany // zwraca nam kolekcję / listę obiektów dzieci
-// wchodzących w skład danego obiektu będącego ich rodzicem. Na przykład jeżeli
-// odwołamy się do:
-document.body // to zwróci nam kolekcję / liste obiektów wchodziących w skład znacnzika HTML BODY.
-// Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
-// w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
-// to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
-// Oczywiście możemy się do nich później zwracać za pomocą numerów indeksów.
-document.forms["ID"] // zwróci kolekcję / liste obiektów wchodziących w skład formularza
-// o jakimś konkretnym ID. W przypadku formularza to będą to wszystkie obiekty wchodzące w skład
-// znacznika FORM.
-ITD. listę
 
 // Zastosowania w konkretnych przypadkach znajdują sie na stronach min. w3school
 
@@ -401,7 +402,7 @@ function checkCookies() {
 // Event listener (nasłuchiwacz zdarzeń)
 
 // Event Listener jest bardzo podobnym roziwązaniem do metod pochodzących od
-// słowa zdarzenia na dodawania / usuwanie z elementów / znaczników HTML zdarzeń.
+// słowa określonego zdarzenia na dodawanie / usuwanie z elementów / znaczników HTML zdarzeń.
 // A w zasadzie Event Listener jest również metodą do dodawania / usuwania zdarzeń z
 // elementów / znaczników HTML z poziomu HTML DOM.
 
@@ -418,9 +419,9 @@ functionName // nazwa funkcji jaka ma być wywołana w momencie zajścia zdarzen
 // UWAGA 2!!!
 // W przypadku dodawania zdarzenia przez addEventListener w drugim parametrze podajemy
 // nazwe funkcji. NIE mamy możliwości wpisania tutaj kodu JavaScript.
-// Podczas umieszczania zdarzeń jako atrybuty w znaczniku HTML bądź dodawania zdarzenia
-// za pomocą metody o nazwie zdarzenai to mielismy możliwość wpisania kody JavaScript.
-// W tym przypadku nie możemy.
+// Podczas umieszczania zdarzeń jako atrybutu w znaczniku HTML bądź dodawania zdarzenia
+// za pomocą metody o nazwie okreslonego zdarzena to mieliśmy możliwość wpisania kodu JavaScript.
+// W tym przypadku NIE możemy.
 // UWAGA 3!!!
 // Jeżeli chcemy przekazać do funkcji jakieś parametry to w związku z tym, że
 // nie możemy pisać nazwy funkcji z nawiasami, a więc nie ma możliwości przekazywania
@@ -463,8 +464,7 @@ useCapture // ten parametr jest wartością logiczną true / false i określa cz
 // W naszym przypadku najpierw wywołane zostanie zdarzenie przypisane do elementu DIV,
 // a następnie to które zostało przypisane do elementu P.
 
-
-// I mamy też metodę do usuwania zdarzeń z obiektu. Jej składnia jest  następująca:
+// I mamy też metodę do usuwania zdarzeń z obiektu. Jej składnia jest następująca:
 
 element.removeEventListener("event", functionName);
 "event" // zapisany w cudzysłowniu rodzaj zdarzenia z którego chcemy usunąć
@@ -481,3 +481,84 @@ removeEventListener.
 element.attachEvent(event, function);
 // - usuwająca:
 element.detachEvent(event, function);
+
+////////////////////////////
+////////////////////////////
+// Węzły i relacje między nimi
+
+// Bardzo ważnym pojęciem w przypadku HTML DOM jest pojęcia węzła.
+// Węzełem w HTML DOM jest każdy element / znacznik HTML. Dodatkowo wszystkie jego atrybuty
+// oraz treść zapisana w tym znaczniku są również węzłami.
+// Prościej mówiąc, wszystko w dokumencie HTML jest węzłęm. Jednakże nie takim samym
+// typem węzła.
+
+// Możliwość nawigowania po elementach / znacznikach HTML DOM
+// jest możliwa dzięki temu, że wystepują relacje pomiedzy węzłami.
+
+// Rodzaje węzłów:
+// - cały dokument HTML jest "węzłem dokumentu",
+// - każdy element / znacznik HTML jest "węzłem elementu",
+// - treść pomiędzy znacznikami HTML (wewnątrz elementu) jest "węzłem tekstowym",
+// - każdy atrybut w elemencie / znaczniku HTML jest "węzłem atrybutu",
+// - wszystkie komentarze są "węzłąmi komentarzy".
+
+// Patrz obrazek Model_DOM_tree_1.jpg lub Model_DOM_tree_2.gif.
+
+// Wykorzystując HTML DOM wszystkie węzły, niezależnie od ich typu, są dostępne
+// poprzez JavaScript. Możemy również dodawać nowe węzły, modyfikować już istniejące
+// oraz je usuwać.
+
+////////////////////////////
+// Relacje między węzłami.
+
+// Węzły w drzewku wezłów (Nodes_relationships.gif) mają chierarchiczną relacje
+// do siebie nawzajem. Inaczej mówiąc są węzły które są:
+// - rodzicem,
+// - dzieckiem,
+// - rodzeństwem.
+
+// Na poniższym przykładzie poznamy chierarchię w HTML:
+
+<html>
+  <head>
+      <title>DOM Tutorial</title>
+  </head>
+  <body>
+      <h1>DOM Lesson one</h1>
+      <p>Hello world!</p>
+  </body>
+</html>
+
+// A więc analizując:
+// <html> jest węzłem dokumentu,
+// <html> nie ma rodziców,
+// <html> jest rodzicem <head> oraz <body>,
+// <head> jest pierwszym dzieckiem <html>,
+// <body> jest drugim dzieckiem <html>,
+// oraz
+// <head> ma jedno dziecko w postaci <title>,
+// <title> ma jedno dziecko (węzeł tekstowy) w postaci treści: "DOM Tutorial",
+// <body> ma dwoje dzieci <h1> oraz <p>,
+// <h1> ma jedno dziecko (węzeł tekstowy) w postaci treści: "DOM Lesson one",
+// <p> ma jedno dziecko (węzłę tekstowy) w postaci treści: "Hello world!",
+// <h1> oraz <p> są rodzeństwem.
+
+// Do nawigowania między węzłami używamy następujących metod które poprzedzamy metodą
+// która pozwoli nam dostać się do okreslonego węzła posiadającego zbiór węzłów dzieci.
+// Niezależnie czy będą to dzieci w postaci innych elementów / znaczników HTML, czy w postaci
+// węzłu tekstowego, czy węzłu atrybuty. A więc metody do nawigowania pomiędzy węzłami:
+parentNode // odnosi się do rodzica węzła na którym wywołujemy tę metodę
+childNodes[numerWezla] // odnosi sie do konkretnego dziecka węzła na którym
+// wywołujemy tę metodę, w nawiasie kwadratowym wskazujemy numer dziecka z kolekcji
+// którą zwraca metoda dostepowa do elementu.
+firstChild // odnosi się do pierwszego dziecka węzła na ktorym wywołujemy tę metdę
+lastChild // odnosi się do ostatniego dziecka węzła na ktorym wywołujemy tę metdę
+nextSibling // odnosi się do nastepnego węzła będącego rodzeństwem w stosunku do węzła na którym
+// wywołujemy tę metodę
+previousSibling // odnosi sie do poprzedniego węzła będącego rodzeństwem w stosumku do węzła
+// na którym wywołujemy tę metodę
+
+// UWAGA !!!
+// Bardzo róznica między "innerHTML" oraz "nodeValue".
+// Jedno jak i drugie zwraca nam wartość w postaci treści elementu / znacznika HTML.
+ // Jednak jedno jak i drugie
