@@ -223,7 +223,7 @@ document.body.replaceChild(elmnt, oryginalny); // podmieniamy stary akapit nowym
 
 ////////////////////////////
 ////////////////////////////
-// Kolekcje
+// Kolekcje elementów HTML
 
 // Już wcześniej była poruszana kwestia metod zwracających kolekcje elementów / znaczników HTML.
 // Są min.:
@@ -232,8 +232,8 @@ document.getElementsByClassName('#CLASS');
 document.getElementsByTagName('#TAG');
 // I tak dalej.
 // Kolekcje zwracane przez powyższe metody są rodzajem tablicy zawierającej elementy HTML.
-// W zależności jakiej metody dostepowej uzyjemy to takie elementy HTML będą umieszczone w tablicy.
-// Jeżeli uzyjemy metodu:
+// W zależności jakiej metody dostepowej użyjemy to takie elementy HTML będą umieszczone w tablicy.
+// Jeżeli uzyjemy metody:
 document.getElementsByTagName('#TAG');
 // To wówczas w tablicy będą tylko elementy HTML o tym samym znaczniku.
 // Ich kolejność w tablicy będzie wynikała z kolejności wystepującej w kodzie HTML.
@@ -250,8 +250,8 @@ mycollection.length;
 // UWAGA !!!
 // Pomimo, że kolekcje elementów HTML przypominają tablicę, to nią nie są !
 // Owszem możemy się odnosic do elementów w nich, jednak nie możemy używać metod
-// modyfikujących je takich jak:
+// modyfikujących je, takich jak:
 valueOf()
-pop() 
+pop()
 push()
 join()

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>DOM example</title>
+		<style>
+      span{
+        font-weight: bold;
+      }
+    </style>
+	</head>
+	<body>
+		<h1>Ćwieczenia z DOM</h1>
+		<h2>Metody dostepowe do elementów</h2>
+
+		<p>Za pomocą metody <span>document.getElementById().innerHTML</span> umieścimy w poniższym pustym akapicie o id="p1" tekst: "Patataj!" </p>
+		<p id="p1">&nbsp;</p>
+		<!-- <button onclick="putText1(this)" type="button">Wstaw tekst</button> -->
+		<button onclick="putText1()" type="button">Wstaw tekst</button>
+
+		<p>Za pomocą metody <span>document.getElementsByTagName().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Cwanie co nie ;)"</p>
+		<p>&nbsp;</p>
+		<button onclick="putText2()" type="button">Wstaw tekst</button>
+
+		<p class="para">Za pomocą metody <span>document.getElementsByClassName().innerHTML</span> umieścimy w poniższym pustym akapicie o class="p1" tekst: "Tego się nie spodziewałeś. Przyznaj !"</p>
+		<p class="para">&nbsp;</p>
+		<button onclick="putText3()" type="button">Wstaw tekst</button>
+
+		<p>Za pomocą metody <span>querySelectorAll().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Magia !"</p>
+		<p>&nbsp;</p>
+		<button onclick="putText4()" type="button">Wstaw tekst</button>
+
+		<p>Za pomocą metody <span>document.title</span> umieścimy w poniższym pustym akapicie o id="title" tekst jaki znajduje się w znaczniku TITLE naszej strony</p>
+		<p id="title">&nbsp;</p>
+		<button onclick="putText5()" type="button">Wstaw tekst</button>
+
+		<script src="document_object_model_examples.js" charset="utf-8"></script>
+	</body>
+</html>

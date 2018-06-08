@@ -71,8 +71,10 @@ firstChild // odnosi się do pierwszego dziecka węzła na ktorym wywołujemy t�
 lastChild // odnosi się do ostatniego dziecka węzła na ktorym wywołujemy tę metdę
 nextSibling // odnosi się do nastepnego węzła będącego rodzeństwem w stosunku do węzła na którym
 // wywołujemy tę metodę
+nextElementSibling
 previousSibling // odnosi sie do poprzedniego węzła będącego rodzeństwem w stosumku do węzła
 // na którym wywołujemy tę metodę
+previousElementSibling
 
 // UWAGA !!!
 // Bardzo ważne
@@ -183,3 +185,101 @@ document.getElementById("id02").innerHTML = document.getElementById("id01").node
 <p id="id02"></p>
 document.getElementById("id02").innerHTML = document.nodeType;
 // W paragrafie "id02" umieszczona będzie treść w postaci: "9".
+
+////////////////////////////
+// Tworzenie, usuwanie, zastępowanie węzłów
+
+// Już podczas opisywania metod stosowanych przy HTML DOM w pliku: 2_document_object_model_methods.js
+// było wspominane o metodach do dodawania, usuwania, zastępowania elementów / znaczników HTML
+// na naszej stronie.
+
+// Dodawanie elementów:
+// Tak w rzeczywistości to metody te które były opisywane tak naprawde służą do
+// dodawania węzłów do "rodziców" a przez to właśnie dodawania elementów na stronie HTML.
+// W związku z tym, że my dodajemy węzły to musimy dodać węzły na każdym etapie.
+// Jeżeli np.: dodamy element typu P to musimy mu jeszcze dodać węzeł typu tekstowego
+// i umieścic w nim tekst.
+
+// Przykład 1:
+<div id="div1"> // do rodzica "div1" dodamy nowe "dziecko" typu P
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+var para = document.createElement('p'); // tworzymy nowy element P
+var textNode = document.createTextNode('This is new.'); // tworzymy węzeł tekstowy z treścią
+para.appendChild(textNode); // dodajemy do nowego elementu para stworzony węzeł tekstowy textNode
+var element = document.getElementById('div1'); // identyfikujemy element będący
+// rodzicem do którego dodamy nowy element
+element.appendChild(para); // do elementu będącego rodzicem dodajemy nowy na samym końcu.
+
+// W powyższym przykładzie dodajemy element na końcu.
+// Aby dodać element na początku to zamiast metody:
+parent.appendChild(newElement);
+// Używamy metody:
+parent.insertBefore(newElement, elemtPrzedKtoryDodamyNowy);
+
+// Przykład 2:
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+var para = document.createElement("p");
+var node = document.createTextNode("This is new.");
+para.appendChild(node);
+var element = document.getElementById("div1");
+var child = document.getElementById("p1"); // identyfikujemy element przed który bedziemy dodawć
+// nowy element typu P
+element.insertBefore(para,child); // umieszczamy nowy element przed ten który wskazaliśmy
+// w metodzie "insertBefore".
+
+// Usuwanie elementów:
+// Metoda ta też była już opisywana. Aby móc usunąć element musimy znać jego "rodzica."
+// Do usuwania służy metoda:
+parent.removeChild(child);
+
+// Przykład 1:
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+var parent = document.getElementById("div1"); // identyfikujemy element będący
+// rodzicem tego którego chcemy usunąć inny element
+var child = document.getElementById("p1"); // identyfikujemy element który
+// będziemy chcieli usunąć
+parent.removeChild(child); // usuwamy element
+
+// Zastępowanie elementó:
+// Jak wcześniejsze metody, ta też była już opisywana.
+// Używamy do tego następującej metody:
+parent.replaceChild(newElement, oldElement);
+
+// Przykład 1:
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+var parent = document.getElementById('div1');
+var currentP = document.getElementById('p1');
+var newP = document.createElement('p');
+var textNode = document.createTextNode('Ten paragraf zastąpił poprzedni');
+newP.appendChild(textNode);
+parent.replaceChild(newP, currentP);
+
+////////////////////////////
+// Kolekcje węzłów
+
+// Kolekcja węzłów jest bardzo podobna do kolekcji elementów HTML opisywanych
+// w pliku: 2_document_object_model_methods.js.
+// Różnica polega na tym, że w kolekcji węzłów znajdują się węzły, a w kolekcji
+// elementów HTML, elementy HTML :)
+// Obie kolekcje to obiekty przypominajace tabele. Mają właściwość / metodę:
+var mycollection = document.body.childNodes;
+mycollection.length;
+// Metoda ta zwraca nam ilość węzłów w naszej kolekcji.
+// Obie kolekcje węzłów oraz elementów HTML zapewniają dostęp do obiektów na liście
+// poprzez indeks. Przy czym pierwszy element ma indeks 0 itd.
+// Najważnijesza różnica między kolekcją węzłó a elementów HTML to taka, że
+// do elementów HTML można uzyskać dostęp poprzez ich nazwę, idetyfikator lub numer indeksu
+// w kolekcji. Natomiast do węzła w kolekcji mamy dostęp jedynie poprzez numer
+// indeksu na którym się znajduje. Drugą ważną różnicą jest to, że tylko kolekcja węzłów
+// może być kolekcją atrybutów bądź treści.
