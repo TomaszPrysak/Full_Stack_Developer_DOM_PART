@@ -7,32 +7,60 @@
       span{
         font-weight: bold;
       }
+			.marg {
+				margin-top: 5px;
+				margin-bottom: 10px;
+	}
     </style>
 	</head>
 	<body>
 		<h1>Ćwieczenia z DOM</h1>
-		<h2>Metody dostepowe do elementów</h2>
+		<h2>Metody dostepowe do elementów HTML</h2>
 
-		<p>Za pomocą metody <span>document.getElementById().innerHTML</span> umieścimy w poniższym pustym akapicie o id="p1" tekst: "Patataj!" </p>
+		<p>1. Za pomocą metody <span>document.getElementById().innerHTML</span> umieścimy w poniższym pustym akapicie o id="p1" tekst: "Patataj!" </p>
 		<p id="p1">&nbsp;</p>
 		<!-- <button onclick="putText1(this)" type="button">Wstaw tekst</button> -->
-		<button onclick="putText1()" type="button">Wstaw tekst</button>
+		<button onclick="putText1()" type="button">Wstaw treść</button>
 
-		<p>Za pomocą metody <span>document.getElementsByTagName().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Cwanie co nie ;)"</p>
+		<p>2. Za pomocą metody <span>document.getElementsByTagName().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Cwanie co nie ;)"</p>
 		<p>&nbsp;</p>
-		<button onclick="putText2()" type="button">Wstaw tekst</button>
+		<button onclick="putText2()" type="button">Wstaw treść</button>
 
-		<p class="para">Za pomocą metody <span>document.getElementsByClassName().innerHTML</span> umieścimy w poniższym pustym akapicie o class="p1" tekst: "Tego się nie spodziewałeś. Przyznaj !"</p>
+		<p class="para">3. Za pomocą metody <span>document.getElementsByClassName().innerHTML</span> umieścimy w poniższym pustym akapicie o class="p1" tekst: "Tego się nie spodziewałeś. Przyznaj !"</p>
 		<p class="para">&nbsp;</p>
-		<button onclick="putText3()" type="button">Wstaw tekst</button>
+		<button onclick="putText3()" type="button">Wstaw treść</button>
 
-		<p>Za pomocą metody <span>querySelectorAll().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Magia !"</p>
+		<p>4. Za pomocą metody <span>querySelectorAll().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Magia !"</p>
 		<p>&nbsp;</p>
-		<button onclick="putText4()" type="button">Wstaw tekst</button>
+		<button onclick="putText4()" type="button">Wstaw treść</button>
 
-		<p>Za pomocą metody <span>document.title</span> umieścimy w poniższym pustym akapicie o id="title" tekst jaki znajduje się w znaczniku TITLE naszej strony</p>
+		<p>5. Za pomocą metody <span>document.title</span> umieścimy w poniższym pustym akapicie o id="title" tekst jaki znajduje się w znaczniku TITLE naszej strony</p>
 		<p id="title">&nbsp;</p>
-		<button onclick="putText5()" type="button">Wstaw tekst</button>
+		<button onclick="putText5()" type="button">Wstaw treść</button>
+
+		<h2>Zmiana treści oraz atrybutów elementów HTML</h2>
+
+		<p>1. Za pomocą metody <span>document.getElementById().innerHTML</span> podmienimy w poniższym akapicie o id="demo" treść na: "Buahahaha!" </p>
+		<p id="demo">Jeżeli ramiona kąta przecięte są prostymi równoległymi, to odpowiednie odcinki wyznaczone przez te proste na jednym ramieniu kąta są proporcjonalne do odpowiednich odcinków wyznaczonych przez te proste na drugim ramieniu kąta.</p>
+		<button onclick="changeText1()" type="button">Podmień treść</button>
+
+		<p>2. Za pomocą metody <span>document.getElementById().innerHTML</span> podmienimy w poniższym nagłówku o id="myHeader" treść na: "POLSKA DAWAJ!" </p>
+		<h3 id="myHeader">Agencja Fitch potwierdziła w piątek długoterminowy rating Polski w walucie obcej na poziomie "A-". Perspektywa ratingu pozostała stabilna.</h3>
+		<button onclick="changeText2()" type="button">Podmień treść</button>
+
+		<p>3. Za pomocą metody <span>document.getElementById().src</span> podmienimy poniższy obrazek przedstawiający uśmiechniętą buźkę na zdjęcie gór. Znacznik IMG ma id="img"</p>
+		<img class="marg" id="img" src="smiley.gif" width="150" height="100"><br />
+		<button onclick="changeIMG1()" type="button">Podmień obrazek</button>
+
+		<p>4. Za pomocą metody <span>document.getElementById().value</span> zmienimy domyślną wartość tekstu umieszczonego w polu tekstowym formularza na treść "Spadaj Pan!". Pole INPUT ma id="myText1"</p>
+		<input class="marg" type="text" id="myText1" value="Dzień dobry Panu"></br>
+		<button onclick="changeValue1()" type="button">Podmień tekst domyślny</button>
+
+		<p>5. Za pomocą metody <span>document.getElementById().value</span> Przechwycimy wartość wpisaną przez użytkownika do pola tekstowego formularza. Znacznik INPUT ma id="myText2"<br />
+		A następnie za pomocą metody <span>document.getElementById().innerHTML</span> umieściny przechwyconą wartość do pustego akapitu znajdującego się pod polem formularza. Akapit ma id="p2"</p>
+		<input class="marg" type="text" id="myText2" value="Wpisz coś !"></br>
+		<p id="p2">&nbsp;</p>
+		<button onclick="fromInput()" type="button">Umieść trekst z formularza w akapicie</button>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

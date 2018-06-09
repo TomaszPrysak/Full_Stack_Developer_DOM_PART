@@ -23,3 +23,29 @@ function putText5(){
 	var pTitle = document.getElementById('title');
 	pTitle.innerHTML = document.title;
 }
+
+function changeText1(){
+	var pChange = document.getElementById('demo');
+	pChange.innerHTML = "Buahahaha!";
+}
+
+function changeText2(){
+	var h3Cahnge = document.getElementById('myHeader');
+	h3Cahnge.innerHTML = "POLSKA DAWAJ!";
+}
+
+function changeIMG1(){
+	var imgChange = document.getElementById('img');
+	imgChange.src = "pic_mountain.jpg";
+}
+
+function changeValue1(){
+	var inputValue = document.getElementById('myText1');
+	inputValue.value = "Spadaj Pan!";
+}
+
+function fromInput(){
+	var inputValue = document.getElementById('myText2').value;
+	var para = document.getElementById('p2');
+	para.innerHTML = inputValue;
+}
