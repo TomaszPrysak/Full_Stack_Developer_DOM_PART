@@ -118,14 +118,17 @@ element3.setAttribute(#attribute, #value) // inny sposób na dostanie się do w�
 
 element1.style.property = new style // zmiana stylu, formatowania jakiegoś znacznika HTML.
 // W ten sposób dostajemy się do formatowania CSS i zmieniamy, nadajemy itd kolejne formatowania.
-// "property" wyglada tak jak w normalnym pliku CSS.
-// Najpierw podajemy "style", co znaczy, że chcemy ustawić formatowanie, a później
+// UWAGA !!!
+// 	"property" jako właściwości stylów które możemy zmieniać róznią się nazwą w niektórych
+// 	przypadkach pomiędzy tym co jest w CSS a tym jakiej nazwy używamy w metodzie HTML DOM.
+// 	Na przykład w CSS jest "background-color", a w metodzie HTML DOM jest "backgroundColor" 
+// Najpierw podajemy słówko "style", co znaczy, że chcemy ustawić formatowanie, a później
 // do jakiego elementu formatowania się odnosimy. Na przykład jeżeli chcemy
 // ustawić / zmienić kolor tła to formuła bedzie nastepjująca:
 <p id="demo">Uczymy sie HTML DOM</p>
 document.getElementById("demo").style.backgroundColor = "yellow";
-// Ta cześć polocenie po "..style." jest właśnie zapisywan tak jak w ustawianiu właściwości
-// formatowania w pliku CSS, z tą różnicą, że tam mamy ":" zamianas "=".
+// Ta cześć polocenie po ".style." jest właśnie zapisywana tak jak w ustawianiu właściwości
+// formatowania w pliku CSS, z tą różnicą, że w pliku CSS mamy ":" a w JavaScript "=".
 // Bardzo ważne jest też to, że właściwość zapisujemy pomiędzy cudzysłowem, np.: "yellow".
 // Kolejny przykład, nadanie tekstowi wyśrodkowania:
 document.getElementById("demo").style.textAlign = "center";

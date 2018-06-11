@@ -66,14 +66,17 @@ function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
 // Przykład z niebezpośrednim umieszczeniem atrybutu zdarzenia w elemencie / znaczniku HTML:
 <button id="btn">The time is?</button> // przycisk tylko z atrybutem ID
 <p id="data"></p> // pusty akapit w który będziemy wstrzykiwać treść za pomocą innerHTML
-document.getElementById("btn").onclick = displayDate(); // dostępo do przrzycisku i
+document.getElementById("btn").onclick = function(){displayDate()}; // dostępo do przrzycisku i
 // przy użyciu metody "onclick" dopisanie mu atrybutu zdarzenia.
+// albo:
+document.getElementById("btn").onclick = displayDate; // należy zwrócić uwagę, że
+// w tym przypadku nie mamy nawiasku, a więc nie możemy wywoływac funkcji z argumentami.
+// aby to zrobić musimy użyć składni ten z: function(){functionName()};
 // JAK WIDAĆ ROBIMY TO POŚREDNIO.
 function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
 	document.getElementById('data').innerHTML = Date(); // umieszcze w pustym akapicie
 	// aktualnej daty
 }
-
 // Bardzo pomocnym zdarzeniem jest wykrycie najechania / zjechania myszą (bez klikania)
 // na element / znacznik HTML. Przykład:
 <h2 onmouseover="mOver(this)" onmouseout="mOut(this)">Najedź na mnie</h2> // nagłówek 2 stopnia

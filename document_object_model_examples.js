@@ -49,3 +49,50 @@ function fromInput(){
 	var para = document.getElementById('p2');
 	para.innerHTML = inputValue;
 }
+
+// function pomijajacHTML(){
+// 	document.write('test');
+// }
+
+function colorTextChange(){
+	var paraToChangeColorText = document.getElementById('p3');
+	paraToChangeColorText.style.color = "red";
+}
+
+function colorBackgroundChange(){
+	var paraToChangeColorBackground = document.getElementById('p4');
+	paraToChangeColorBackground.style.backgroundColor = "yellow";
+}
+
+function textCenterAlign(){
+	var paraTextCenterAlign = document.getElementById('p5');
+	paraTextCenterAlign.style.textAlign = "center";
+}
+
+function fontResize(){
+	var paraResize = document.getElementById('p6');
+	paraResize.style.fontSize = "25px";
+}
+
+function visibilityPara(){
+	var paraHidden = document.getElementById('p7');
+	paraHidden.style.visibility = "hidden";
+}
+
+function boxMouseOver(element){
+	element.style.backgroundColor = "green";
+	element.innerHTML = "CZERWONY!!!"
+}
+
+function boxMouseOut(element){
+ element.style.backgroundColor = "red";
+ element.innerHTML = "ZIELONY!!!"
+}
+
+// function imgMouseDowne(element){
+// 	element.src = "bulbon.gif";
+// }
+//
+// function imgMouseUp(element){
+// 	element.src = "bulboff.gif";
+// }

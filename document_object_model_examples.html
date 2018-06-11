@@ -10,57 +10,122 @@
 			.marg {
 				margin-top: 5px;
 				margin-bottom: 10px;
-	}
+			}
+			.box1{
+				background-color: red;
+				width: 100px;
+				/* height: 50px; */
+				margin-top: 10px;
+    		margin-bottom: 10px;
+				text-align: center;
+				padding: 30px;
+			}
     </style>
 	</head>
 	<body>
 		<h1>Ćwieczenia z DOM</h1>
 		<h2>Metody dostepowe do elementów HTML</h2>
 
-		<p>1. Za pomocą metody <span>document.getElementById().innerHTML</span> umieścimy w poniższym pustym akapicie o id="p1" tekst: "Patataj!" </p>
+		<p>1. Za pomocą metody <span>document.getElementById().innerHTML</span> dającej dostęp do elementu poprzez <span>ID</span> umieścimy w poniższym pustym akapicie o id="p1" tekst: "Patataj!" </p>
 		<p id="p1">&nbsp;</p>
 		<!-- <button onclick="putText1(this)" type="button">Wstaw tekst</button> -->
 		<button onclick="putText1()" type="button">Wstaw treść</button>
 
-		<p>2. Za pomocą metody <span>document.getElementsByTagName().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Cwanie co nie ;)"</p>
+		<p>2. Za pomocą metody <span>document.getElementsByTagName().innerHTML</span> dającej dostęp do elementu poprzez <span>TAG</span> umieścimy w poniższym pustym akapicie tekst: "Cwanie co nie ;)" <br>
+		Pamiętaj: w wyniku odwołania się poprzez <span>TAG</span> zwracana jest lista elementów o tym samym znaczniku. Musimy zatem się odwołać poprzez indeks do interesującego nas elementu z tej.</p>
 		<p>&nbsp;</p>
 		<button onclick="putText2()" type="button">Wstaw treść</button>
 
-		<p class="para">3. Za pomocą metody <span>document.getElementsByClassName().innerHTML</span> umieścimy w poniższym pustym akapicie o class="p1" tekst: "Tego się nie spodziewałeś. Przyznaj !"</p>
+		<p class="para">3. Za pomocą metody <span>document.getElementsByClassName().innerHTML</span> dającej dostęp do elementu poprzez <span>CLASS</span> umieścimy w poniższym pustym akapicie o class="p1" tekst: "Tego się nie spodziewałeś. Przyznaj !" <br>
+		Pamiętaj: w wyniku odwołania się poprzez <span>CLASS</span> zwracana jest lista elementów o tej samej klasie. Musimy zatem się odwołać poprzez indeks do interesującego nas elementu z tej.</p>
 		<p class="para">&nbsp;</p>
 		<button onclick="putText3()" type="button">Wstaw treść</button>
 
-		<p>4. Za pomocą metody <span>querySelectorAll().innerHTML</span> umieścimy w poniższym pustym akapicie tekst: "Magia !"</p>
+		<p>4. Za pomocą metody <span>querySelectorAll().innerHTML</span> dającej dostęp do elementu poprzez <span>odwołania występującew CSS</span> umieścimy w poniższym pustym akapicie tekst: "Magia !" <br>
+		Pamiętaj: w wyniku odwołania się poprzez <span>odwołania występującew CSS</span> zwracana jest lista elementów pasujacych do tego odwołania. Musimy zatem się odwołać poprzez indeks do interesującego nas elementu z tej.</p>
 		<p>&nbsp;</p>
 		<button onclick="putText4()" type="button">Wstaw treść</button>
 
-		<p>5. Za pomocą metody <span>document.title</span> umieścimy w poniższym pustym akapicie o id="title" tekst jaki znajduje się w znaczniku TITLE naszej strony</p>
+		<p>5. Za pomocą metody <span>document.title</span> dajacej dostęp do elementu <span>TITLE</span> umieścimy w poniższym pustym akapicie o id="title" tekst jaki znajduje się w znaczniku TITLE naszej strony</p>
 		<p id="title">&nbsp;</p>
 		<button onclick="putText5()" type="button">Wstaw treść</button>
 
-		<h2>Zmiana treści oraz atrybutów elementów HTML</h2>
+		<h2>Dostęp do treści oraz atrybutów elementów HTML oraz ich modyfikacja</h2>
 
 		<p>1. Za pomocą metody <span>document.getElementById().innerHTML</span> podmienimy w poniższym akapicie o id="demo" treść na: "Buahahaha!" </p>
-		<p id="demo">Jeżeli ramiona kąta przecięte są prostymi równoległymi, to odpowiednie odcinki wyznaczone przez te proste na jednym ramieniu kąta są proporcjonalne do odpowiednich odcinków wyznaczonych przez te proste na drugim ramieniu kąta.</p>
+		<p id="demo">Jeżeli ramiona kąta przecięte są prostymi równoległymi, to odpowiednie odcinki wyznaczone przez te proste...</p>
 		<button onclick="changeText1()" type="button">Podmień treść</button>
 
 		<p>2. Za pomocą metody <span>document.getElementById().innerHTML</span> podmienimy w poniższym nagłówku o id="myHeader" treść na: "POLSKA DAWAJ!" </p>
 		<h3 id="myHeader">Agencja Fitch potwierdziła w piątek długoterminowy rating Polski w walucie obcej na poziomie "A-". Perspektywa ratingu pozostała stabilna.</h3>
 		<button onclick="changeText2()" type="button">Podmień treść</button>
 
-		<p>3. Za pomocą metody <span>document.getElementById().src</span> podmienimy poniższy obrazek przedstawiający uśmiechniętą buźkę na zdjęcie gór. Znacznik IMG ma id="img"</p>
+		<p>3. Za pomocą metody <span>document.getElementById().src</span> dającej dostęp do atrybutu <span>scr</span> znacznika IMG, podmienimy poniższy obrazek przedstawiający uśmiechniętą buźkę na zdjęcie gór. Znacznik IMG ma id="img"</p>
 		<img class="marg" id="img" src="smiley.gif" width="150" height="100"><br />
 		<button onclick="changeIMG1()" type="button">Podmień obrazek</button>
 
-		<p>4. Za pomocą metody <span>document.getElementById().value</span> zmienimy domyślną wartość tekstu umieszczonego w polu tekstowym formularza na treść "Spadaj Pan!". Pole INPUT ma id="myText1"</p>
+		<p>4. Za pomocą metody <span>document.getElementById().value</span> dającej dostęp do atrybutu <span>value</span> znacznika INPUT, zmienimy domyślną wartość tekstu umieszczonego w polu tekstowym formularza na treść "Spadaj Pan!". Pole INPUT ma id="myText1"</p>
 		<input class="marg" type="text" id="myText1" value="Dzień dobry Panu"></br>
 		<button onclick="changeValue1()" type="button">Podmień tekst domyślny</button>
 
-		<p>5. Za pomocą metody <span>document.getElementById().value</span> Przechwycimy wartość wpisaną przez użytkownika do pola tekstowego formularza. Znacznik INPUT ma id="myText2"<br />
+		<p>5. Za pomocą metody <span>document.getElementById().value</span> dającej dostęp do atrybutu <span>value</span> znacznika INPUT, przechwycimy wartość wpisaną przez użytkownika do pola tekstowego formularza. Znacznik INPUT ma id="myText2"<br />
 		A następnie za pomocą metody <span>document.getElementById().innerHTML</span> umieściny przechwyconą wartość do pustego akapitu znajdującego się pod polem formularza. Akapit ma id="p2"</p>
 		<input class="marg" type="text" id="myText2" value="Wpisz coś !"></br>
 		<p id="p2">&nbsp;</p>
 		<button onclick="fromInput()" type="button">Umieść trekst z formularza w akapicie</button>
+
+		<p>6. Za pomocą metody <span>document.write()</span> umieścimy tekst "To tak można ?!" na stronie internetowej pomijając HTML. <br>
+		Aby tego dokonać w interesująceym nas miejscu w kodzie HTML umieszczamy znaczniki <span>SCRIPT</span> a między nimi <span>document.write('some text')</span> wraz z interesującym nas tekstem.</p>
+		<script type="text/javascript">document.write('To tak można ?!');</script>
+
+		<h2>Dostęp do stylów CSS oraz ich modyfikacja</h2>
+
+		<p>Za pomocą JavaScript mamy możliwość modyfikowania dużej ilości stylów.<br>
+		Zatem nie bedziemy wszystkie tutaj przerabiać tylko niektóre.</p>
+
+		<p>1. Za pomocą metody <span>document.getElementById().style.color</span> zmienimy kolor tekstu w poniższym akapicie o id="p3" na czerwony.</p>
+		<p id="p3">Kajak – niewielka łódź turystyczna lub sportowa.</p>
+		<button onclick="colorTextChange()" type="button">Zmień kolor treści</button>
+
+		<p>2. Za pomocą metody <span>document.getElementById().style.backgroundColor</span> zmienimy kolor tła w poniższym akapicie o id="p4" na zółty.</p>
+		<p id="p4">Praca – skalarna wielkość fizyczna, miara ilości energii przekazywanej między układami fizycznymi w procesach mechanicznych, elektrycznych, termodynamicznych i innych.</p>
+		<button onclick="colorBackgroundChange()" type="button">Zmień kolor tła</button>
+
+		<p>3. Za pomocą metody <span>document.getElementById().style.textAlign</span> wyśrodkujemy tekst w poniższym akapicie o id="p5".</p>
+		<p id="p5">To ja uciekam na środek ;)</p>
+		<button onclick="textCenterAlign()" type="button">Wyśrodkuj tekst</button>
+
+		<p>4. Za pomocą metody <span>document.getElementById().style.fontSize</span> zwiększymy czcionkę treści w poniższym akapicie o id="p6".</p>
+		<p id="p6">Rosnę !!!!</p>
+		<button onclick="fontResize()" type="button">Zwiększ czcionkę</button>
+
+		<p>5. Za pomocą metody <span>document.getElementById().style.visibility </span> ukryjemy treść z akapitu o id="p7".</p>
+		<p id="p7">Znikam ;)</p>
+		<button onclick="visibilityPara()" type="button">Ukryj treść</button>
+
+		<h2>Animacje</h2>
+
+		<p>...</p>
+
+		<h2>Zdarzenia</h2>
+
+		<p>Zdarzeń jakie mogą zostać użyte na naszej stronie internetowej jest bardzo dużo.<br>
+	  Przedstawimy tutaj tylko kilka z nich.<br>
+		Wszystkie powyższe ćwiczenia wykonywane są poprzez przyciśnięce przycisku. A więc zdarzenie "onclick" zostało zaprezentowane.</p>
+
+		<p>1. Zdarzenie <span>onclick</span> może zostać wywołane nie tylko na przycisku tylko na każdym elemencie HTML.<br>
+		Aby nie stososować w poniższsym akapicie atrybutu ID i pozniej uzyskiwać za jego pomocą dostęp do akapitu.<br>
+		Od razu podczas wywoływania zdarzenia w <span>onclick</span> odwołujemy się do Tego obiketu <span>this</span>.<br>
+		Później tylko stosujemy <span>this.innerHTML</span></p>
+		<p onclick="this.innerHTML='I było tak strasznie ? :)'">Nie bój się, kliknij mnie ! ;)</p>
+
+		<p>2. Za pomocą zdarzenia <span>onmouseover</span> oraz <span>onmouseout</span> dokonamy zmiany koloru tła w poniższym boksie po najechaniu i zjechaniu myszką.</p>
+		<div onmouseover="boxMouseOver(this)" onmouseout="boxMouseOut(this)" class="box1">ZIELONY!!!</div>
+
+		<p>3. Za pomocą zdarzenia <span>onmousedown</span> oraz <span>onmouseup</span> dokonamy zmiany żarówk z wyłączonej na włączoną.<br>
+		Zdarzenia te polegają przyciśnięciu i przytrzymaniu klawisza myszki oraz na puszczeniu klawisza myszki.</p>
+		<img onmousedown="this.src='bulbon.gif'" onmouseup="this.src='bulboff.gif'" width="50" height="100" src="bulboff.gif" alt="">
+		<!-- <img onmousedown="imgMouseDowne(this)" onmouseup="imgMouseUp(this)" width="50" height="100" src="bulboff.gif" alt=""> -->
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>
