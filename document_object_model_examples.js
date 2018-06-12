@@ -96,3 +96,19 @@ function boxMouseOut(element){
 // function imgMouseUp(element){
 // 	element.src = "bulboff.gif";
 // }
+
+function changeTextToUpper(){
+	var inputBox = document.getElementById('myText3');
+	inputBox.value = inputBox.value.toUpperCase();
+}
+
+document.getElementById('p8').onmouseover = displayDate;
+document.getElementById('p8').onmouseout = function(){displayText()};
+
+function displayDate(){
+	document.getElementById('p8').innerHTML = Date();
+}
+
+function displayText(){
+	document.getElementById('p8').innerHTML = "Jestem datą ! :P nie wierzysz... najedź na mnie";
+}

@@ -114,7 +114,7 @@
 		Wszystkie powyższe ćwiczenia wykonywane są poprzez przyciśnięce przycisku. A więc zdarzenie "onclick" zostało zaprezentowane.</p>
 
 		<p>1. Zdarzenie <span>onclick</span> może zostać wywołane nie tylko na przycisku tylko na każdym elemencie HTML.<br>
-		Aby nie stososować w poniższsym akapicie atrybutu ID i pozniej uzyskiwać za jego pomocą dostęp do akapitu.<br>
+		Aby nie stososować w poniższsym akapicie atrybutu ID i później uzyskiwać za jego pomocą dostęp do akapitu.<br>
 		Od razu podczas wywoływania zdarzenia w <span>onclick</span> odwołujemy się do Tego obiketu <span>this</span>.<br>
 		Później tylko stosujemy <span>this.innerHTML</span></p>
 		<p onclick="this.innerHTML='I było tak strasznie ? :)'">Nie bój się, kliknij mnie ! ;)</p>
@@ -124,8 +124,27 @@
 
 		<p>3. Za pomocą zdarzenia <span>onmousedown</span> oraz <span>onmouseup</span> dokonamy zmiany żarówk z wyłączonej na włączoną.<br>
 		Zdarzenia te polegają przyciśnięciu i przytrzymaniu klawisza myszki oraz na puszczeniu klawisza myszki.</p>
-		<img onmousedown="this.src='bulbon.gif'" onmouseup="this.src='bulboff.gif'" width="50" height="100" src="bulboff.gif" alt="">
+		<img class="marg" onmousedown="this.src='bulbon.gif'" onmouseup="this.src='bulboff.gif'" width="100" height="150" src="bulboff.gif" alt="">
 		<!-- <img onmousedown="imgMouseDowne(this)" onmouseup="imgMouseUp(this)" width="50" height="100" src="bulboff.gif" alt=""> -->
+
+		<p>4. Za pomocą zdarzenia <span>onchange</span> zmienimy tekst wprowadzany przez użytkownika do pola tekstowego formularza.<br>
+		Zmiana będzie polegała na tym, że niezależnie od tego jaką konwencję przyjmie użytkownik to cały tekst zostanie zamieniony na wielkie litery.</p>
+		<input class="marg" id="myText3" type="text" onchange="changeTextToUpper()">
+
+		<p>5. Znowu z wykorzystaniem do przykładu pola <span>INPUT</span>. Tym razem w momencie wprowadzania przez użtykownika tekstu<br>
+		za pomocą zdarzenia <span>onfocusin</span> podświetlimy tło pola tekstowego.<br>
+		Natomiast za pomocą zdarzenia <span>onfocusout</span> zdejmiemy podświetlenie tła pola tekstowego.</p>
+		<input class="marg" onfocusin="this.style.backgroundColor = 'yellow'" onfocusout="this.style.backgroundColor = 'white'">
+
+		<p>6. Wszystkie powyższe zdarzenia zostały osadzone jako argument w interesujących nas elementach HTML.<br>
+		Jednak HTML DOM daje nam możliwość dodawania do elementów HTML atrybutów, a co za tym idzie możemy dodawać też zdarzenia.<br>
+		Poniżej przykład z troche innym zastosowaniem metod dodających zdarzenia:</p>
+		<p>Za pomocą metody <span>document.getElementById('p8').onmouseover = displayDate;</span> dodaliśmy zdarzenie najechania myszką.<br>
+		Za pomocą metody <span>document.getElementById('p8').onmouseout = function(){displayText()};</span> dodaliśmy zdarzenie zjechania myszką.<br>
+		Należy zwrócić uwagę, że jeżeli chcemy dodać zdarzenie i wskazać funkcję bez przekazywania argumentów to wtedy tą funkcję piszemy bez znaku <span>()</span>, samą jej nazwę <span>functionName;</span><br>
+		Natomiast jeżeli chcemy przekazywać do funkcji jakieś argumenty to wówczas musimy wskazać w zdarzeniu na taką konstrukcję: <span>function(){functionName()};</span><br>
+		<span>UWAGA!</span> Jest różnica między tym jak wywołujemy funkcję podczas zdarzenia, jeżeli zdarzenie umieścilismy jako atrybut a tym jak dodaliśmy zdarzenie jakąś metodą.</p>
+		<p id="p8">Jestem datą ! :P nie wierzysz... najedź na mnie</p>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>
