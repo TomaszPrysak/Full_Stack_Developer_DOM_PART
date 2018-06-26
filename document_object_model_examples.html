@@ -20,6 +20,11 @@
 				text-align: center;
 				padding: 30px;
 			}
+			.box2{
+				background-color: LightGreen;
+				width: 200px;
+				padding: 10px;
+			}
     </style>
 	</head>
 	<body>
@@ -41,8 +46,8 @@
 		<p class="para">&nbsp;</p>
 		<button onclick="putText3()" type="button">Wstaw treść</button>
 
-		<p>4. Za pomocą metody <span>querySelectorAll().innerHTML</span> dającej dostęp do elementu poprzez <span>odwołania występującew CSS</span> umieścimy w poniższym pustym akapicie tekst: "Magia !" <br>
-		Pamiętaj: w wyniku odwołania się poprzez <span>odwołania występującew CSS</span> zwracana jest lista elementów pasujacych do tego odwołania. Musimy zatem się odwołać poprzez indeks do interesującego nas elementu z tej.</p>
+		<p>4. Za pomocą metody <span>querySelectorAll().innerHTML</span> dającej dostęp do elementu poprzez <span>odwołania występujące w CSS</span> umieścimy w poniższym pustym akapicie tekst: "Magia !" <br>
+		Pamiętaj: w wyniku odwołania się poprzez <span>odwołania występujące w CSS</span> zwracana jest lista elementów pasujacych do tego odwołania. Musimy zatem się odwołać poprzez indeks do interesującego nas elementu z tej.</p>
 		<p>&nbsp;</p>
 		<button onclick="putText4()" type="button">Wstaw treść</button>
 
@@ -60,7 +65,7 @@
 		<h3 id="myHeader">Agencja Fitch potwierdziła w piątek długoterminowy rating Polski w walucie obcej na poziomie "A-". Perspektywa ratingu pozostała stabilna.</h3>
 		<button onclick="changeText2()" type="button">Podmień treść</button>
 
-		<p>3. Za pomocą metody <span>document.getElementById().src</span> dającej dostęp do atrybutu <span>scr</span> znacznika IMG, podmienimy poniższy obrazek przedstawiający uśmiechniętą buźkę na zdjęcie gór. Znacznik IMG ma id="img"</p>
+		<p>3. Za pomocą metody <span>document.getElementById().src</span> dającej dostęp do atrybutu <span>scr</span> znacznika <span>IMG</span>, podmienimy poniższy obrazek przedstawiający uśmiechniętą buźkę na zdjęcie gór. Znacznik IMG ma id="img"</p>
 		<img class="marg" id="img" src="smiley.gif" width="150" height="100"><br />
 		<button onclick="changeIMG1()" type="button">Podmień obrazek</button>
 
@@ -136,7 +141,7 @@
 		Natomiast za pomocą zdarzenia <span>onfocusout</span> zdejmiemy podświetlenie tła pola tekstowego.</p>
 		<input class="marg" onfocusin="this.style.backgroundColor = 'yellow'" onfocusout="this.style.backgroundColor = 'white'">
 
-		<p>6. Wszystkie powyższe zdarzenia zostały osadzone jako argument w interesujących nas elementach HTML.<br>
+		<p>6. Wszystkie powyższe zdarzenia zostały osadzone jako atrybut w interesujących nas elementach HTML.<br>
 		Jednak HTML DOM daje nam możliwość dodawania do elementów HTML atrybutów, a co za tym idzie możemy dodawać też zdarzenia.<br>
 		Poniżej przykład z troche innym zastosowaniem metod dodających zdarzenia:</p>
 		<p>Za pomocą metody <span>document.getElementById('p8').onmouseover = displayDate;</span> dodaliśmy zdarzenie najechania myszką.<br>
@@ -145,6 +150,29 @@
 		Natomiast jeżeli chcemy przekazywać do funkcji jakieś argumenty to wówczas musimy wskazać w zdarzeniu na taką konstrukcję: <span>function(){functionName()};</span><br>
 		<span>UWAGA!</span> Jest różnica między tym jak wywołujemy funkcję podczas zdarzenia, jeżeli zdarzenie umieścilismy jako atrybut a tym jak dodaliśmy zdarzenie jakąś metodą.</p>
 		<p id="p8">Jestem datą ! :P nie wierzysz... najedź na mnie</p>
+
+		<p>7. Oprócz opisanych wyżej sposobów dodawania zdarzeń do Elementów HTML są jeszcze tzw. Event Listener (nasłuchiwacze zdarzeń).<br>
+		Dodwanie zdarzenia za pomocą nasłuchiwaczy zdarzeń działa podobnie jak dodawanie zdarzenia za pomocą dodania do elementu atrybutu zdarzenia.<br>
+		Różnica wynika głównie konstrukcji nasłuchiwaczny oraz możliwości określenia propagacji zdarzeń.<br>
+		Konstrukcja nasłuchiwacza zdarzeń: <span>element.addEventListener("event", functionName, useCapture);</span></p>
+
+		<p>a) Za pomocą <span>document.getElementById('eventListener1').addEventListener("click", showAlert);</span><br>
+		dodamy do ponizszego przycisku o id="eventListener1" zdarzenie polegająe na wyświetlaniu komunikatu.</p>
+		<button id="eventListener1" type="button">Pokaż mi co masz w środku ;P</button>
+
+		<p>b) Do poniższego przycisku dodamy nastepujące rodzaje zdarzeń:<br>
+		-zdarzenie najeżdżania myszką <span>document.getElementById('eventListener2').addEventListener("mouseover", addTextOver);</span> dodające treść w zielonym polu,<br>
+		-zdarzenie zjeżdżania myszka <span>document.getElementById('eventListener2').addEventListener("mouseout", addTextOut);</span> dodające treść w zieolnym polu,<br>
+		-zdarzenie kliknięcia wwykonujące alert <span>document.getElementById('eventListener2').addEventListener("click", function(){alert("I co Pan mi zrobisz :P:P:P");});</span> wyświetlające okienko wyskakujące,<br>
+		-zdarzenie kliknięcia <span>document.getElementById('eventListener2').addEventListener("click", function(){document.getElementById('p9').innerHTML += "ałaaa ! Nie naciskaj mnie !<br>"});</span> dodające treść w zielonym polu.</p>
+		<button class="marg" id="eventListener2" type="button">Jestem wariat!</button>
+		<div class="box2" id='p9'></div>
+
+		<p>c) W nasłuchiwaczach zdarzeń możemy rownież przekazywać parametry w wywoływanych funkcjach.</p>
+		<label for="a">A:</label>
+		<input id="input1" type="text" name="a" value="??" style="width:25px">
+		<label for="b">B:</label>
+		<input id="input2" type="text" name="b" value="??" style="width:25px">
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

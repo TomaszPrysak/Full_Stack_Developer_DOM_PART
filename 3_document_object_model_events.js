@@ -29,7 +29,7 @@ onlick = "Wstawiany tekst";
 
 // Ogólna postać dodawania zdarzenia za pomocą metod:
 
-document.getElementById("ID")."eventHandler" = JavaScriptCode
+document.getElementById("ID").eventHandler = JavaScriptCode
 document.getElementById("ID").onfocus = this.style.background = "yellow";
 
 // Możemy po znaku równa się napisać cały kod JavaScript który ma się wykonać.
@@ -54,7 +54,7 @@ function zmienTekst(obj){ // funkcja wywoływana po kliknieciu w nagłówek
 	obj.innerHTML = "Ooops!"; // zamiana treści nagłówka za pomocą metody innerHTML
 }
 
-// Przykład z uzyciem przycisku do wywoływania zdarzeń:
+// Przykład z użyciem przycisku do wywoływania zdarzeń:
 <button onclick="displayDate()">The time is?</button> // przycisk z atrybutem
 // klikniecia i wywoływaniem funkcji "displayDate()"
 <p id="data"></p> // pusty akapit w który będziemy wstrzykiwać treść za pomocą innerHTML
@@ -141,11 +141,12 @@ function checkCookies() {
 
 // A więc mamy metodę do dodawania zdarzeń do obiektu. Jej składnia jest nastepująca:
 
-element.addEventListener(event, functionName, useCapture);
+element.addEventListener("event", functionName, useCapture);
 event // rodzaj zdarzenia jaki dodajemy.
 // UWAGA!!!
 // W przypadku dodawania zdarzenia przez addEventListener nie używamy w nazwie zdarzenia
-// prefixu "on". Zamiast "onclick" będzie "click".
+// prefixu "on". Zamiast "onclick" będzie "click". I nazwa zdarzenia musi być
+// koniecznie w cudzysłowiu.
 functionName // nazwa funkcji jaka ma być wywołana w momencie zajścia zdarzenia.
 // UWAGA 1!!!
 // Nazwe funkcji NIE kończymy znakiem otwarcie i zamknięcia "()".
@@ -166,7 +167,7 @@ function(){ functionName(p1, p2, ..); } // tą całość podstawiamy w miejsce g
 // do funkcji poprzez nazwę, możemy również zapisac kod JavaScript.
 useCapture // ten parametr jest wartością logiczną true / false i określa czy należy
 // używać propagacji zdarzeń typu bubbling czy capturing. Parametr ten jest opcjonalny.
-// Domyslnie jest false, czyli uzywana jest progpagacja typu bubbling.
+// Domyslnie jest false, czyli używana jest progpagacja typu bubbling.
 
 // Metoda addEventListener:
 // - dołącza obsługę zdarzeń do okreslonego elementu,
