@@ -25,6 +25,22 @@
 				width: 200px;
 				padding: 10px;
 			}
+			.box3{
+				background-color: LightBlue;
+				width: 100px;
+				padding: 10px;
+			}
+			#boxPropagacja1, #boxPropagacja2{
+				background-color: Orange;
+				width: 200px;
+				padding: 30px;
+				text-align: center;
+			}
+			#akapitPropagacja1, #akapitPropagacja2{
+				background-color: white;
+				padding: 5px;
+				border: 1px solid;
+			}
     </style>
 	</head>
 	<body>
@@ -161,18 +177,42 @@
 		<button id="eventListener1" type="button">Pokaż mi co masz w środku ;P</button>
 
 		<p>b) Do poniższego przycisku dodamy nastepujące rodzaje zdarzeń:<br>
-		-zdarzenie najeżdżania myszką <span>document.getElementById('eventListener2').addEventListener("mouseover", addTextOver);</span> dodające treść w zielonym polu,<br>
-		-zdarzenie zjeżdżania myszka <span>document.getElementById('eventListener2').addEventListener("mouseout", addTextOut);</span> dodające treść w zieolnym polu,<br>
-		-zdarzenie kliknięcia wwykonujące alert <span>document.getElementById('eventListener2').addEventListener("click", function(){alert("I co Pan mi zrobisz :P:P:P");});</span> wyświetlające okienko wyskakujące,<br>
-		-zdarzenie kliknięcia <span>document.getElementById('eventListener2').addEventListener("click", function(){document.getElementById('p9').innerHTML += "ałaaa ! Nie naciskaj mnie !<br>"});</span> dodające treść w zielonym polu.</p>
+		-zdarzenie najeżdżania myszką <span>document.getElementById().addEventListener("mouseover", addTextOver);</span> dodające treść w zielonym polu,<br>
+		-zdarzenie zjeżdżania myszka <span>document.getElementById().addEventListener("mouseout", addTextOut);</span> dodające treść w zieolnym polu,<br>
+		-zdarzenie kliknięcia wykonujące alert <span>document.getElementById().addEventListener("click", function(){alert("I co Pan mi zrobisz :P:P:P");});</span> wyświetlające okienko wyskakujące,<br>
+		-zdarzenie kliknięcia <span>document.getElementById().addEventListener("click", function(){document.getElementById('p9').innerHTML += "ałaaa ! Nie naciskaj mnie !<br>"});</span> dodające treść w zielonym polu.</p>
 		<button class="marg" id="eventListener2" type="button">Jestem wariat!</button>
-		<div class="box2" id='p9'></div>
+		<div class="box2" id='d1'></div>
 
-		<p>c) W nasłuchiwaczach zdarzeń możemy rownież przekazywać parametry w wywoływanych funkcjach.</p>
+		<p>c) W nasłuchiwaczach zdarzeń możemy rownież przekazywać parametry w wywoływanych funkcjach.<br>
+		W poniższym mini-kalkulatorze przekazujemy w nawoływaczu zdarzeń wartości wpisane przez użytkownika wartości do pól <span>A</span> oraz <span>B</span>.<br>
+		Są cztery przysicki działań a więc utworzyliśmy tyle samo nawoływaczy zdarzeń uruchamiających odpowiednie funkcje.<br>
+		Dodawanie/Odejmowanie/Mnożenie/Dzielenie: <span>document.getElementById().addEventListener("click", function(){dodawanie/odejmowanie/mnozenie/dzielenie(inputToCount1.value, inputToCount2.value);});</span> <br>
+	 	</p>
 		<label for="a">A:</label>
-		<input id="input1" type="text" name="a" value="??" style="width:25px">
+		<input id="input1" type="text" name="a" value="??" style="width:50px">
 		<label for="b">B:</label>
-		<input id="input2" type="text" name="b" value="??" style="width:25px">
+		<input id="input2" type="text" name="b" value="??" style="width:50px">
+		<p>
+		<button id="eventListener3" class="marg" type="button">+</button>
+		<button id="eventListener4" class="marg" type="button">-</button>
+		<button id="eventListener5" class="marg" type="button">*</button>
+		<button id="eventListener6" class="marg" type="button">/</button>
+		<button id="eventListener7" class="marg" type="button">CE</button>
+		</p>
+		<div class="box3" id="d2"></div>
+
+		<p>d) Propagacja zdarzeń:</p>
+		<p>Bubbing - najpeirw obsługiwane są zdarzenia elemnetu wewnętrzenego</p>
+		<div id="boxPropagacja1">
+			<h3>Bubbling:</h3>
+			<p id="akapitPropagacja1">Kliknij mnie!</p>
+		</div>
+		<p>Capturing - najpierw obłsugiwane są darzenia elementu zewnętrznego</p>
+		<div id="boxPropagacja2">
+			<h3>Capturing:</h3>
+			<p id="akapitPropagacja2">Kliknij mnie!</p>
+		</div>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

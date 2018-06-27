@@ -126,15 +126,15 @@ function showAlert(){
 document.getElementById('eventListener2').addEventListener("mouseover", addTextOver);
 document.getElementById('eventListener2').addEventListener("mouseout", addTextOut);
 document.getElementById('eventListener2').addEventListener("click", function(){alert("I co Pan mi zrobisz :P:P:P");});
-document.getElementById('eventListener2').addEventListener("click", function(){document.getElementById('p9').innerHTML += "ałaaa ! Nie naciskaj mnie !<br>"});
+document.getElementById('eventListener2').addEventListener("click", function(){document.getElementById('d1').innerHTML += "ałaaa ! Nie naciskaj mnie !<br>"});
 
 function addTextOver(){
-	var para = document.getElementById('p9');
+	var para = document.getElementById('d1');
 	para.innerHTML += "Zejdź ze mnie ! Jestem wariat<br>";
 }
 
 function addTextOut(){
-	var para = document.getElementById('p9');
+	var para = document.getElementById('d1');
 	para.innerHTML += "Masz szczęście ! Jestem wariat<br>";
 }
 
@@ -148,12 +148,78 @@ inputToCount2.addEventListener("focus", function(){this.value='';});
 inputToCount2.addEventListener("focus", function(){this.style.backgroundColor = 'yellow';});
 inputToCount2.addEventListener("focusout", function(){checkIfNumeric(this);});
 
-function checkIfNumeric(elementValue){
-	if (!isNaN(elementValue.value)){
-		elementValue.style.backgroundColor='white';
+function checkIfNumeric(element){
+	if (element.value == "") {
+		alert("Pole nie może być puste. Wprowadź wartość.")
+		element.value='??';
+		element.style.backgroundColor='white';
 	}else{
-		alert("Wprowadzona wartość nie jest wartościa numeryczną. Wprowadź wartość ponowwnie.")
-		elementValue.value='??';
-		elementValue.style.backgroundColor='white';
+		if (!isNaN(element.value)){
+			element.style.backgroundColor='white';
+		}else{
+			alert("Wprowadzona wartość nie jest wartościa numeryczną. Wprowadź wartość ponowwnie.")
+			element.value='??';
+			element.style.backgroundColor='white';
+		}
 	}
 }
+
+document.getElementById('eventListener3').addEventListener("click", function(){dodawanie(inputToCount1.value, inputToCount2.value);});
+
+function dodawanie(x,y){
+	if (x == "??" || y == "??") {
+		alert("Nie wprowdzono wszystkich wartości.")
+	}else{
+		var result = parseInt(x) + parseInt(y);
+		document.getElementById("d2").innerHTML = result;
+	}
+}
+
+document.getElementById('eventListener4').addEventListener("click", function(){odejmowanie(inputToCount1.value, inputToCount2.value);});
+
+function odejmowanie(x,y){
+	if (x == "??" || y == "??") {
+		alert("Nie wprowdzono wszystkich wartości.")
+	}else{
+		var result = parseInt(x) - parseInt(y);
+		document.getElementById("d2").innerHTML = result;
+	}
+}
+
+document.getElementById('eventListener5').addEventListener("click", function(){mnozenie(inputToCount1.value, inputToCount2.value);});
+
+function mnozenie(x,y){
+	if (x == "??" || y == "??") {
+		alert("Nie wprowdzono wszystkich wartości.")
+	}else{
+		var result = parseInt(x) * parseInt(y);
+		document.getElementById("d2").innerHTML = result;
+	}
+}
+
+document.getElementById('eventListener6').addEventListener("click", function(){dzielenie(inputToCount1.value, inputToCount2.value);});
+
+function dzielenie(x,y){
+	if (x == "??" || y == "??") {
+		alert("Nie wprowdzono wszystkich wartości.")
+	}else if (y == 0) {
+		alert("Ty debilu ! Nie można dzielić przez zero !!!")
+	}else{
+		var result = parseInt(x) / parseInt(y);
+		document.getElementById("d2").innerHTML = result;
+	}
+}
+
+document.getElementById('eventListener7').addEventListener("click", ce);
+
+function ce(){
+	inputToCount1.value = "??";
+	inputToCount2.value = "??";
+	document.getElementById('d2').innerHTML = "";
+}
+
+document.getElementById("boxPropagacja1").addEventListener("click", function(){alert("Kliknąłeś w pomarańczkę");}, false);
+document.getElementById("akapitPropagacja1").addEventListener("click", function(){alert("Kliknałeś w białeczko");}, false);
+
+document.getElementById("boxPropagacja2").addEventListener("click", function(){alert("Kliknąłeś w pomarańczkę");}, true);
+document.getElementById("akapitPropagacja2").addEventListener("click", function(){alert("Kliknałeś w białeczko");}, true);

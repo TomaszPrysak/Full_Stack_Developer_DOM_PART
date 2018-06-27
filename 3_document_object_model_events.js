@@ -185,7 +185,7 @@ useCapture // ten parametr jest wartością logiczną true / false i określa cz
 // O propagacji zdarzeń.
 // Propagacja zdarzeń jest sposobem definiowania kolejności elementów w przypadku
 // wystąpienia zdarzenia. Jeśli mamy element P w elemencie DIV a zdarzenia są podpięte
-// zarówno do elementu P oraz DIV. Mogą to być zdarzenia róznego typu lub tego samego.
+// zarówno do elementu P oraz DIV. Mogą to być zdarzenia różnego typu lub tego samego.
 // Użytkownik kliknie w element <p>, to które zdarzenie "kliknięcie" elementu powinno zostać obsłużone jako pierwsze?
 // Bubbling.
 // Podczas tego rodzaju propagacji zdarzenie w najbardziej wewnętrznym elemencie
