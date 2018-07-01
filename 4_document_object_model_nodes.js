@@ -91,6 +91,7 @@ previousElementSibling
 // "innerHTML" zwraca bezpośrednio treści elementu, a "nodeValue" wartość węzła.
 // Aby "nodeValue" zwrócił treść, musimy użyć metod dostepu do węzła będącego
 // treścią elementu.
+
 // Przykłady:
 // W paragrafie "id02" umieścimy treść występującą w paragrafie "id01" za pomocą
 // "innerHTML". Bezpośrednio porzez dostęp do paragrafu "id01":

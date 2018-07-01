@@ -202,17 +202,37 @@
 		</p>
 		<div class="box3" id="d2"></div>
 
-		<p>d) Propagacja zdarzeń:</p>
-		<p>Bubbing - najpeirw obsługiwane są zdarzenia elemnetu wewnętrzenego</p>
+		<p>d) Propagacja zdarzeń.<br>
+		Pojęcie to ma zastosowanie wtedy jeżeli element do którego przypinamy jakieś zdarzenie znajduje się wewnątrz innego elementy, który również ma przypisane jakieś zdarzenie. <br>
+		Opcja ta daje nam możliwość zarządzania które zdarzenie zajdzie jako pierwsze. To z elementu wewnętrznego bądź zewnętrznego.</p>
+		<p>Bubbing - najpeirw obsługiwane są zdarzenia elemnetu najbardziej wewnętrzenego.<br>
+		Wówczas w poleceniu nasłuchiwacza zdarzeń <span>element.addEventListener("event", functionName, useCapture);</span> w miejscu <span>useCapture</span> używamy <span>false</span>, który jest domyślną opcja i nie musimy go podawać.</p>
 		<div id="boxPropagacja1">
 			<h3>Bubbling:</h3>
 			<p id="akapitPropagacja1">Kliknij mnie!</p>
 		</div>
-		<p>Capturing - najpierw obłsugiwane są darzenia elementu zewnętrznego</p>
+		<p>Capturing - najpierw obłsugiwane są darzenia elementu zewnętrznego.<br>
+			Wówczas w poleceniu nasłuchiwacza zdarzeń <span>element.addEventListener("event", functionName, useCapture);</span> w miejscu <span>useCapture</span> używamy <span>true</span>.</p>
 		<div id="boxPropagacja2">
 			<h3>Capturing:</h3>
 			<p id="akapitPropagacja2">Kliknij mnie!</p>
 		</div>
+
+		<h2>Węzły</h2>
+
+		<p>Na podstawie poniższego rankingu przedstawione zostaną węzły i relacje między nimi.</p>
+
+		<label for="list1"><b>Najlepsze marki motocyklowe wg. rankingu Pitka:</b></label>
+		<ul id="list1">
+			<li>Kawasaki</li>
+			<li>Ducati</li>
+			<li>KTM</li>
+			<li>Harley-Davidson</li>
+			<li>BMW</li>
+			<li>MV Agusta</li>
+		</ul>
+
+		<p>1. </p>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>
