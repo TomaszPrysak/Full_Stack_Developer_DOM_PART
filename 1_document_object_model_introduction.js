@@ -34,7 +34,7 @@
 // Bardzo pomocnym narzędziem developerskim w poruszaniu się i możliwościach jakie
 // dają nam dane elementy strony w kontekście DOM jest polecenie:
 
-colnsole.dir(domcument)
+console.dir(document);
 
 // Polecenie to wpisujemy w konsoli przeglądarki na otwartej interesującej nas stronie.
 // Po wywołaniu dostajemy listę zbiór informacji o danej stronie internetowej w kontekście

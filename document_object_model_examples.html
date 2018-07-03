@@ -220,19 +220,62 @@
 
 		<h2>Węzły</h2>
 
+		<h3>Relacje między węzłami</h3>
+
 		<p>Na podstawie poniższego rankingu przedstawione zostaną węzły i relacje między nimi.</p>
 
 		<label for="list1"><b>Najlepsze marki motocyklowe wg. rankingu Pitka:</b></label>
-		<ul id="list1">
-			<li>Kawasaki</li>
-			<li>Ducati</li>
-			<li>KTM</li>
-			<li>Harley-Davidson</li>
-			<li>BMW</li>
-			<li>MV Agusta</li>
-		</ul>
+		<ol id="list1">
+			<li id="li1">Kawasaki</li>
+			<li id="li2">Ducati</li>
+			<li id="li3">KTM</li>
+			<li id="li4">Harley-Davidson</li>
+			<li id="li5">BMW</li>
+			<li id="li6">MV Agusta</li>
+		</ol>
 
-		<p>1. </p>
+		<p>1. Za pomocą <span>parentNode.id</span> wywołanego na jednym z elementów listy <span>document.getElementById("li1")</span> pobierzemy id naszej listy.</p>
+		<p id="p9">&nbsp;</p>
+		<button type="button" onclick="node1()">Pobierz id listy</button>
+
+		<p>2. Za pomocą <span>childNodes[9].innerHTML</span> wywołanego na liście <span>document.getElementsByTagName("ul")[0]</span> pobierzemy nazwę <span>BMW</span>.</p>
+		<p id="p10">&nbsp;</p>
+		<button type="button" onclick="node2()">Pobierz markę motocykla</button>
+
+		<p>3. Za pomocą <span>firstElementChild.innerHTML</span> wywołanego na liście <span>document.getElementById("list1")</span> pobierzemy pierwszą markę motocykla.</p>
+		<p id="p11">&nbsp;</p>
+		<button type="button" onclick="node3()">Pobierz pierwszą markę motocykla</button>
+
+		<p>4. Za pomocą <span>lastElementChild.innerHTML</span> wywołanego na liście <span>document.getElementById("list1")</span> pobierzemy ostatnią markę motocykla.</p>
+		<p id="p12">&nbsp;</p>
+		<button type="button" onclick="node4()">Pobierz ostatnią markę motocykla</button>
+
+		<p>5. Za pomocą <span>nextElementSibling.innerHTML</span> wywołanego na elemencie listy KTM <span>document.getElementById("li3")</span> pobierzemy nastepną markę motocykla.</p>
+		<p id="p13">&nbsp;</p>
+		<button type="button" onclick="node5()">Pobierz następną markę motocykla</button>
+
+		<p>6. Za pomocą <span>previousElementSibling.innerHTM</span> wywołanego na elemencie listy KTM <span>document.getElementById("li3")</span> pobierzemy poprzednią markę motocykla.</p>
+		<p id="p14">&nbsp;</p>
+		<button type="button" onclick="node6()">Pobierz poprzednią markę motocykla</button>
+
+		<p>7. Za pomocą <span>nodeName</span> wywołanym na naszym rankingu <span>document.getElementById("list1")</span> pobierzemy znaczki HTML tego rankingu.</p>
+		<p id="p15">&nbsp;</p>
+		<button type="button" onclick="node7()">Pobierz tag HTML rankingu</button>
+
+		<p>8. Za pomoca <span>nodeType</span> wywołanym na naszym rankingu <span>document.getElementById("list1")</span> pobierzemy rodzaj węzła.</p>
+		<p id="p16">&nbsp;</p>
+		<button type="button" onclick="node8()">Pobierz typ węzła całego rankingu</button>
+
+		<p>9. Za pomoca <span>nodeType</span> wywołanym na tekście "Harley-Davidson" <span>document.getElementById("li4").childNodes[0]</span> pobierzemy rodzaj węzła.</p>
+		<p id="p17">&nbsp;</p>
+		<button type="button" onclick="node9()">Pobierz type węzła tekstu "Harley-Davidson" rankingu</button>
+
+		<h3>Tworzenie, usuwanie i podmienianie węzłó</h3>
+
+		<p>1. Poniżej dodamy nowy akapit za pomocą procedury dodawania nowego węzła.</p>
+		<button type="button" onclick="addP()">Dodaj akapit poniżej</button>
+		<div id="nodeTest">
+		</div>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

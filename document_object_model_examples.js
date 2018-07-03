@@ -223,3 +223,61 @@ document.getElementById("akapitPropagacja1").addEventListener("click", function(
 
 document.getElementById("boxPropagacja2").addEventListener("click", function(){alert("Kliknąłeś w pomarańczkę");}, true);
 document.getElementById("akapitPropagacja2").addEventListener("click", function(){alert("Kliknałeś w białeczko");}, true);
+
+
+function node1(){
+	var parent = document.getElementById("li1").parentNode.id;
+	document.getElementById('p9').innerHTML = parent;
+}
+
+function node2(){
+	var node = document.getElementsByTagName("ol")[0].childNodes[9].innerHTML;
+	document.getElementById('p10').innerHTML = node;
+}
+
+function node3(){
+	var node = document.getElementById("list1").firstElementChild.innerHTML;
+	document.getElementById('p11').innerHTML = node;
+}
+
+function node4(){
+	var node = document.getElementById("list1").lastElementChild.innerHTML;
+	document.getElementById('p12').innerHTML = node;
+}
+
+function node5(){
+	var ducati = document.getElementById('li3').nextElementSibling.innerHTML;
+	document.getElementById('p13').innerHTML = ducati;
+}
+
+function node6(){
+	var harley = document.getElementById('li3').previousElementSibling.innerHTML;
+	document.getElementById('p14').innerHTML = harley;
+}
+
+function node7(){
+	var tagName = document.getElementById("list1").nodeName;
+	document.getElementById("p15").innerHTML = tagName;
+}
+
+function node8(){
+	var node = document.getElementsByTagName("ol")[0].nodeType;
+	document.getElementById("p16").innerHTML = node;
+}
+
+function node9(){
+	var node = document.getElementById("li4").childNodes[0].nodeType;
+	document.getElementById("p17").innerHTML = node;
+}
+
+function addP(){
+	var akapit = document.createElement('p');
+	var wezelTekstowy = document.createTextNode('Jestem nowym stworzeniem :D');
+	akapit.appendChild(wezelTekstowy);
+	var element = document.getElementById('nodeTest');
+	element.appendChild(akapit);
+
+	var wezelAtrybutu = document.createAttribute('id');
+	wezelAtrybutu.value = "nowyP1";
+	akapit.setAttributeNode(wezelAtrybutu);
+}

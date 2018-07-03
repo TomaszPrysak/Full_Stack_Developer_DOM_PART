@@ -68,13 +68,17 @@ childNodes[numerWezla] // odnosi sie do konkretnego dziecka węzła na którym
 // wywołujemy tę metodę, w nawiasie kwadratowym wskazujemy numer dziecka z kolekcji
 // którą zwraca metoda dostepowa do elementu.
 firstChild // odnosi się do pierwszego dziecka węzła na ktorym wywołujemy tę metdę
+// ale jako pierwsze dziecko wskazuje na pierwszy jakikolwiek węzeł
 lastChild // odnosi się do ostatniego dziecka węzła na ktorym wywołujemy tę metdę
 nextSibling // odnosi się do nastepnego węzła będącego rodzeństwem w stosunku do węzła na którym
 // wywołujemy tę metodę
 nextElementSibling
 previousSibling // odnosi sie do poprzedniego węzła będącego rodzeństwem w stosumku do węzła
 // na którym wywołujemy tę metodę
-previousElementSibling
+first/lastElementChild// odnosi się do pierwszego/ostatniego dziecka wezła na ktorym wywołujemy tę metodę
+// ale jako pierwsze/ostatnie dziecko wskazuje na węzeł elementu (a wcześniej mogą być też węzły innego typu)
+next/previousElementSibling// odnosi się do następnego/poprzedniego dziecka wezła na ktorym wywołujemy tę metodę
+// ale jako następne/poprzednie dziecko wskazuje na węzeł elementu (a wcześniej mogą być też węzły innego typu)
 
 // UWAGA !!!
 // Bardzo ważne
