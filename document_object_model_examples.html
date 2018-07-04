@@ -41,6 +41,16 @@
 				padding: 5px;
 				border: 1px solid;
 			}
+			#swirus{
+				background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+				text-align: center;
+				color: white;
+			}
+			#podmieniany{
+				background: black;
+				color: white;
+				text-align: center;
+			}
     </style>
 	</head>
 	<body>
@@ -270,12 +280,49 @@
 		<p id="p17">&nbsp;</p>
 		<button type="button" onclick="node9()">Pobierz type węzła tekstu "Harley-Davidson" rankingu</button>
 
-		<h3>Tworzenie, usuwanie i podmienianie węzłó</h3>
+		<h3>Tworzenie, usuwanie i podmienianie węzłów</h3>
 
-		<p>1. Poniżej dodamy nowy akapit za pomocą procedury dodawania nowego węzła.</p>
-		<button type="button" onclick="addP()">Dodaj akapit poniżej</button>
+		<h4>Dodawanie elementu</h4>
+		<p>1. Poniżej dodamy nowy akapit za pomocą procedury dodawania nowego węzła:<br>
+		a) Najpierw tworzymy nowy element / węzeł elementu, w tym przypadku akapit <span>var nowyAkapit = document.createElement('p')</span>,<br>
+	 	b) Następnie tworzymy węzeł tekstowego <span>var trescNowegoAkapitu = document.createTextNode('Jestem nowym stworzeniem :D')</span>, który później będzie treścią naszego akapitu,<br>
+		c) Mając węzeł elementu oraz węzłe tekstowy dodajemy węzeł tekstowy do węzła elemetu <span>nowyAkapit.appendChild(trescNowegoAkapitu)</span>, treść staje się w tym momencie dzieckiem akapitu,<br>
+		d) Na końcu, tak stworzony akapit wraz z treścią dodajemy do rodzica, w naszym przypadku do DIV <span>document.getElementById('nodeTest').appendChild(nowyAkapit)</span>.</p>
+		<p>W tym przykładzie dodatwko dodano do nowo stworzonego akapitu jeszcze atrybut w postaci nadania mu ID. Procedura była następująca:<br>
+		a) Napierw stworzono węzeł atrybutu, w tym przypadku ID <span>var idNowegoAkapitu = document.createAttribute('id')</span>,<br>
+		b) Nastepnie do tego atrybutu dodano wartośc będąca ID nowego akapitu <span>idNowegoAkapitu.value = "p18"</span>,<br>
+		c) Na końcu dodano atrybut ID z wartością będącą ID do naszego nowego akapitu <span>nowyAkapit.setAttributeNode(idNowegoAkapitu)</span>.</p>
+		<button id="addButton1" type="button" onclick="addP()">Dodaj akapit poniżej</button>
 		<div id="nodeTest">
 		</div>
+
+		<p>2. Za pomocą poniższego przycisku dodamy nowy akapit w losowym miejscu. Procedura jest następująca:<br>
+		a) Dodawanie nowego elementu oraz dodanie do niego ID wyglada podobnie jak w poprzednim przykładzie,<br>
+		b) Róznica wynika jedynie w poleceniu dodającym akapit do rodzica.<br>
+		Ponieważ my dodajemy nowy element przed jakimś innym już istenijącym to musimy:<br>
+		- zidentyfikować rodzica do którego będziemy dodawać nowy akapit <span>var elementGdzieDodamyNowyAkapit = document.body</span>,<br>
+		- zidentyfikować element przed którym umieścimy nowy akapit <span>var elemetPrzedKtoryDodamyNowyAkapit = document.getElementById(paraNumber)</span>,<br>
+		- użyć polecenia do dodawania nowego elementu przed inny, już istniejący <span>elementGdzieDodamyNowyAkapit.insertBefore(nowyAkapit, elemetPrzedKtoryDodamyNowyAkapit)</span>.<br>
+		c) Losowanie miejsca w którym zostanie wstawiony nowy akapit do podejrzenia w pliku JavaScript.</p>
+		<button type="button" onclick="addPbyRandom()">Dodaj nowy akapit w losowym miejscu</button>
+
+		<h4>Usuwanie elementu</h4>
+		<p>Za pomocą poniższego przycisku usuniemy jakiś inny losowy przycisk. Procedura:<br>
+		a) Losowanie przycisku do usunięcia do podejrzenia w pliku JavaScript,<br>
+		b) Identyfikujemy rodzica z którego będziemy usuwać przycisk <span>var rodzicZKtoregoUsuniemyPrzysisk = document.body</span><br>
+		c) Używamy polecenia do usuwania elementu z rodzica <span>rodzicZKtoregoUsuniemyPrzysisk.removeChild(document.getElementsByTagName('button')[number])</span> </p>
+		<button type="button" onclick="removeButtonbyRandom()">Usuń losowy przycisk</button>
+
+		<h4>Podmienianie elementu</h4>
+		<p>Za pomocą poniższego przycisku podmienimy przycisk na nowy akapit.<br>
+		Przykład z usuwaniem losowego przycisku jest wartościowy jednak w przypadku naszej ćwiczeniowej strony HTML DOM zawierającej dużą ilość przyciskow,<br>
+	 	ciężko się zorientować czy przycisk który był w danym miejscu, faktycznie został usunięty.<br>
+		Dlatego w tym przykładzie, z podmienianniem losowego przycisku, zamiast go usuwać wstawimy w jego miejsce nowy akapit. A zatem procedura jest nastepująca:<br>
+		a) Losujemy przycisk który będzie podmieniany. Do podejrzenia w pliku JavaScript,<br>
+		b) Tworzymy nowy akapit, tworząc nowy węzeł elementu oraz węzeł tekstowy. Dodajemy do węzła elementu węzeł atrybutu wraz z wartością ID,<br>
+		c) Lokalizujemy rodzica oraz przycisk który podmienimy,<br>
+		d) Za pomocą polecenia podmieniamy przycisk na akapit <span>rodzicWKtorymZamienimyPrzycisk.replaceChild(nowyAkapit, zamienianyPrzycisk[number])</span>.</p>
+		<button type="button" onclick="replaceButtonbyRandom()">Zamień losowy przycisk</button>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

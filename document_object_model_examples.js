@@ -271,13 +271,79 @@ function node9(){
 }
 
 function addP(){
-	var akapit = document.createElement('p');
-	var wezelTekstowy = document.createTextNode('Jestem nowym stworzeniem :D');
-	akapit.appendChild(wezelTekstowy);
-	var element = document.getElementById('nodeTest');
-	element.appendChild(akapit);
+	var nowyAkapit = document.createElement('p');
+	var trescNowegoAkapitu = document.createTextNode('Jestem nowym stworzeniem :D');
+	nowyAkapit.appendChild(trescNowegoAkapitu);
+	var rodzicDoKtóregoDodamyNowyAkapit = document.getElementById('nodeTest');
+	rodzicDoKtóregoDodamyNowyAkapit.appendChild(nowyAkapit);
 
-	var wezelAtrybutu = document.createAttribute('id');
-	wezelAtrybutu.value = "nowyP1";
-	akapit.setAttributeNode(wezelAtrybutu);
+	var idNowegoAkapitu = document.createAttribute('id');
+	idNowegoAkapitu.value = "p18";
+	nowyAkapit.setAttributeNode(idNowegoAkapitu);
+
+	document.getElementById("addButton1").disabled = true;
+}
+
+function addPbyRandom(){
+	var number;
+	do {
+		number = Math.floor(Math.random()*19);
+	} while (number == 0);
+
+	var paraNumber = "p" + number;
+
+	var nowyAkapit = document.createElement('p');
+	var trescNowegoAkapitu = document.createTextNode('YEAHHHH JESTEM ŚWIREM ! :D');
+	nowyAkapit.appendChild(trescNowegoAkapitu);
+	var idNowegoAkapitu = document.createAttribute('id');
+	idNowegoAkapitu.value = "swirus";
+	nowyAkapit.setAttributeNode(idNowegoAkapitu);
+
+	var rodzicDoKtoregoDodamyNowyAkapit = document.body;
+	var elemetPrzedKtoryDodamyNowyAkapit = document.getElementById(paraNumber);
+
+	rodzicDoKtoregoDodamyNowyAkapit.insertBefore(nowyAkapit, elemetPrzedKtoryDodamyNowyAkapit);
+
+	console.log(paraNumber);
+
+	alert("Gdzieś na stronie pojawił się świrusek ;)");
+}
+
+function removeButtonbyRandom(){
+	var listButton = document.getElementsByTagName('button');
+	var number;
+	do {
+		number = Math.floor(Math.random()*(listButton.length-1));
+	} while (number == 0);
+
+	var rodzicZKtoregoUsuniemyPrzysisk = document.body;
+	var usuwanyPrzycisk = document.getElementsByTagName('button');
+
+	rodzicZKtoregoUsuniemyPrzysisk.removeChild(usuwanyPrzycisk[number]);
+
+	alert("Usunięty został jakiś przycisk :P");
+
+	console.log(usuwanyPrzycisk[number].innerHTML);
+}
+
+function replaceButtonbyRandom(){
+	var listButton = document.getElementsByTagName('button');
+	var number;
+	do {
+		number = Math.floor(Math.random()*(listButton.length-1));
+	} while (number == 0);
+
+	var nowyAkapit = document.createElement('p');
+	var trescNowegoAkapitu = document.createTextNode('Ojojojoj a gdzie sie podział przycisk :O ????');
+	nowyAkapit.appendChild(trescNowegoAkapitu);
+	var idNowegoAkapitu = document.createAttribute('id');
+	idNowegoAkapitu.value = "podmieniany";
+	nowyAkapit.setAttributeNode(idNowegoAkapitu);
+
+	var rodzicWKtorymZamienimyPrzycisk = document.body;
+	var zamienianyPrzycisk = document.getElementsByTagName('button');
+
+	console.log(zamienianyPrzycisk[number].innerHTML);
+
+	rodzicWKtorymZamienimyPrzycisk.replaceChild(nowyAkapit, zamienianyPrzycisk[number]);
 }
