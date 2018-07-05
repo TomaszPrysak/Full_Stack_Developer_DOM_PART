@@ -11,6 +11,18 @@
 				margin-top: 5px;
 				margin-bottom: 10px;
 			}
+			#plate{
+				background-color: red;
+				height: 400px;
+				width: 400px;
+				position: relative;
+			}
+			#square{
+				background-color: white;
+				height: 50px;
+				width: 50px;
+				position: absolute;
+			}
 			.box1{
 				background-color: red;
 				width: 100px;
@@ -136,7 +148,27 @@
 
 		<h2>Animacje</h2>
 
-		<p>...</p>
+		<p>Za pomocą metody <span>setInterval(animation,5)</span> wywoływanej podczas kliknięcia przyciskiem <span>Animuj</span> uruchomimy animację.<br>
+		Polega ona przemieszczania mniejszego kwadratu po większym kwadracie.<br>
+		Opisana metoda powoduje wywoływanie funkcji w określonych interwałach.<br>
+		Jako pierwszy parametr metody podajemy nazwę funkcji cyklicznie wywoływanej,<br>
+		a jako drugi parametr podajemy czas w milisenkundach stanowiący odstepy między wywołaniami funkcji.<br>
+	 	Bardzo ważne jest użycie metody <span>clearInterval(setInterval(animation,5))</span> która zatrzymuje działanie.<br>
+		Paramterem jest cała metoda wywołująca funkcję cyklicznie.</p>
+
+		<p>Podoną metodą jest <span>setTimeout(function, milliseconds)</span>, która powoduje opóźnienie startu działnia funkcji,<br>
+		podanej jako pierwszy parametr metody, o czas podany w milisekundach jako drugi paramter metody.<br>
+		Metoda z kolei jest pokazana na przykładzie strojenia zegarka za pomoca przycisku <span>Stroimy zegarek</span></p>
+
+		<button class="marg" type="button" onclick="animationStart()">Animuj</button>
+
+		<div id="plate">
+			<div id="square">
+			</div>
+		</div>
+
+		<button type="button" onclick="watchStart()" class="marg">Stroimy zegrek</button>
+		<p id="zegarek">Ale co stroimy, skoro nie ma zegarka ?!?!?!</p>
 
 		<h2>Zdarzenia</h2>
 
@@ -204,11 +236,11 @@
 		<label for="b">B:</label>
 		<input id="input2" type="text" name="b" value="??" style="width:50px">
 		<p>
-		<button id="eventListener3" class="marg" type="button">+</button>
-		<button id="eventListener4" class="marg" type="button">-</button>
-		<button id="eventListener5" class="marg" type="button">*</button>
-		<button id="eventListener6" class="marg" type="button">/</button>
-		<button id="eventListener7" class="marg" type="button">CE</button>
+			<button id="eventListener3" class="marg" type="button">+</button>
+			<button id="eventListener4" class="marg" type="button">-</button>
+			<button id="eventListener5" class="marg" type="button">*</button>
+			<button id="eventListener6" class="marg" type="button">/</button>
+			<button id="eventListener7" class="marg" type="button">CE</button>
 		</p>
 		<div class="box3" id="d2"></div>
 
@@ -311,7 +343,7 @@
 		a) Losowanie przycisku do usunięcia do podejrzenia w pliku JavaScript,<br>
 		b) Identyfikujemy rodzica z którego będziemy usuwać przycisk <span>var rodzicZKtoregoUsuniemyPrzysisk = document.body</span><br>
 		c) Używamy polecenia do usuwania elementu z rodzica <span>rodzicZKtoregoUsuniemyPrzysisk.removeChild(document.getElementsByTagName('button')[number])</span> </p>
-		<button type="button" onclick="removeButtonbyRandom()">Usuń losowy przycisk</button>
+		<button id="mnienie1" type="button" onclick="removeButtonbyRandom()">Usuń losowy przycisk</button>
 
 		<h4>Podmienianie elementu</h4>
 		<p>Za pomocą poniższego przycisku podmienimy przycisk na nowy akapit.<br>
@@ -322,7 +354,11 @@
 		b) Tworzymy nowy akapit, tworząc nowy węzeł elementu oraz węzeł tekstowy. Dodajemy do węzła elementu węzeł atrybutu wraz z wartością ID,<br>
 		c) Lokalizujemy rodzica oraz przycisk który podmienimy,<br>
 		d) Za pomocą polecenia podmieniamy przycisk na akapit <span>rodzicWKtorymZamienimyPrzycisk.replaceChild(nowyAkapit, zamienianyPrzycisk[number])</span>.</p>
-		<button type="button" onclick="replaceButtonbyRandom()">Zamień losowy przycisk</button>
+		<button id="mnienie2" type="button" onclick="replaceButtonbyRandom()">Zamień losowy przycisk</button>
+
+		<h4>Kolekcje elementów oraz węzłów</h4>
+		<p>Kolekcje były uzywane w powyższych przykładach. Warto przejrzeć te przykłady w pliku JavaScript.<br>
+		Jest zarówno pobieranie całej kolekcji elementów jednego TAGa, a nastepnie odwoływanie się do konkretnego elementu poprzez indeks z kolekcji itd.</p>
 
 		<script src="document_object_model_examples.js" charset="utf-8"></script>
 	</body>

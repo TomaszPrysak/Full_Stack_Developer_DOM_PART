@@ -79,6 +79,42 @@ function visibilityPara(){
 	paraHidden.style.visibility = "hidden";
 }
 
+function animationStart(){
+	var boxP = document.getElementById("plate");
+	var boxS = document.getElementById("square");
+	var position = 0;
+	var id = setInterval(animation,5);
+	function animation(){
+		if (position == 350) {
+			clearInterval(id);
+		} else {
+			position++;
+			r1 = Math.floor(Math.random()*255);
+			g1 = Math.floor(Math.random()*255);
+			b1 = Math.floor(Math.random()*255);
+			boxP.style.backgroundColor = "rgb("+r1+", "+g1+", "+b1+")";
+			r2 = Math.floor(Math.random()*255);
+			g2 = Math.floor(Math.random()*255);
+			b2 = Math.floor(Math.random()*255);
+			boxS.style.backgroundColor = "rgb("+r2+", "+g2+", "+b2+")";
+			boxS.style.top = position + "px";
+			boxS.style.left = position + "px";
+		}
+	}
+}
+
+function watchStart(){
+	setTimeout(watchStart1, 3000);
+	function watchStart1(){
+		setInterval(watchStart2,1000);
+		function watchStart2(){
+			var time = new Date();
+			var timeHuman = time.toLocaleTimeString();
+			document.getElementById("zegarek").innerHTML = timeHuman;
+		}
+	}
+}
+
 function boxMouseOver(element){
 	element.style.backgroundColor = "green";
 	element.innerHTML = "CZERWONY!!!"
@@ -312,26 +348,32 @@ function addPbyRandom(){
 function removeButtonbyRandom(){
 	var listButton = document.getElementsByTagName('button');
 	var number;
+	var currentButton;
 	do {
-		number = Math.floor(Math.random()*(listButton.length-1));
-	} while (number == 0);
+		number = Math.floor(Math.random()*(listButton.length));
+		currentButton = document.getElementsByTagName('button')[number];
+	} while (currentButton.id === "mnienie1" || currentButton.parentNode.nodeName == "P");
 
 	var rodzicZKtoregoUsuniemyPrzysisk = document.body;
 	var usuwanyPrzycisk = document.getElementsByTagName('button');
+	//
+	console.log(listButton);
+	console.log(number);
+	console.log(usuwanyPrzycisk[number].innerHTML);
 
 	rodzicZKtoregoUsuniemyPrzysisk.removeChild(usuwanyPrzycisk[number]);
 
 	alert("Usunięty został jakiś przycisk :P");
-
-	console.log(usuwanyPrzycisk[number].innerHTML);
 }
 
 function replaceButtonbyRandom(){
 	var listButton = document.getElementsByTagName('button');
 	var number;
+	var currentButton;
 	do {
-		number = Math.floor(Math.random()*(listButton.length-1));
-	} while (number == 0);
+		number = Math.floor(Math.random()*(listButton.length));
+		currentButton = document.getElementsByTagName('button')[number];
+	} while (currentButton.id === "mnienie2" || currentButton.parentNode.nodeName == "P");
 
 	var nowyAkapit = document.createElement('p');
 	var trescNowegoAkapitu = document.createTextNode('Ojojojoj a gdzie sie podział przycisk :O ????');
@@ -343,6 +385,8 @@ function replaceButtonbyRandom(){
 	var rodzicWKtorymZamienimyPrzycisk = document.body;
 	var zamienianyPrzycisk = document.getElementsByTagName('button');
 
+	console.log(listButton);
+	console.log(number);
 	console.log(zamienianyPrzycisk[number].innerHTML);
 
 	rodzicWKtorymZamienimyPrzycisk.replaceChild(nowyAkapit, zamienianyPrzycisk[number]);
