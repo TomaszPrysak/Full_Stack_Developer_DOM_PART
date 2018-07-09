@@ -4,13 +4,11 @@
 		<meta charset="utf-8">
 		<title>DOM example</title>
 		<style>
+		/* element */
       span{
         font-weight: bold;
       }
-			.marg {
-				margin-top: 5px;
-				margin-bottom: 10px;
-			}
+			/* id */
 			#plate{
 				background-color: red;
 				height: 400px;
@@ -22,25 +20,6 @@
 				height: 50px;
 				width: 50px;
 				position: absolute;
-			}
-			.box1{
-				background-color: red;
-				width: 100px;
-				/* height: 50px; */
-				margin-top: 10px;
-    		margin-bottom: 10px;
-				text-align: center;
-				padding: 30px;
-			}
-			.box2{
-				background-color: LightGreen;
-				width: 200px;
-				padding: 10px;
-			}
-			.box3{
-				background-color: LightBlue;
-				width: 100px;
-				padding: 10px;
 			}
 			#boxPropagacja1, #boxPropagacja2{
 				background-color: Orange;
@@ -62,6 +41,34 @@
 				background: black;
 				color: white;
 				text-align: center;
+			}
+			#compare{
+				border-style: solid;
+				border-width: 1px;
+			}
+			/* class */
+			.marg {
+				margin-top: 5px;
+				margin-bottom: 10px;
+			}
+			.box1{
+				background-color: red;
+				width: 100px;
+				/* height: 50px; */
+				margin-top: 10px;
+    		margin-bottom: 10px;
+				text-align: center;
+				padding: 30px;
+			}
+			.box2{
+				background-color: LightGreen;
+				width: 200px;
+				padding: 10px;
+			}
+			.box3{
+				background-color: LightBlue;
+				width: 100px;
+				padding: 10px;
 			}
     </style>
 	</head>
@@ -120,6 +127,29 @@
 		<p>6. Za pomocą metody <span>document.write()</span> umieścimy tekst "To tak można ?!" na stronie internetowej pomijając HTML. <br>
 		Aby tego dokonać w interesująceym nas miejscu w kodzie HTML umieszczamy znaczniki <span>SCRIPT</span> a między nimi <span>document.write('some text')</span> wraz z interesującym nas tekstem.</p>
 		<script type="text/javascript">document.write('To tak można ?!');</script>
+
+		<h3>innerHTML, textContent, innerText - różnice</h3>
+
+		<h4>Umieszczanie treści</h4>
+
+		<p>Za pomocą trzech omawianych metod (przypisanych do przycisków poniżej) spróbujemy umieścim w pustym akapicie poniższy tekst,<br>
+		zawierający znacznik formatujący B oraz dodatkowe spacje:<br>
+		<xmp id="compare1">       Jestem magikiem, mam niewidzialne elementy oraz     trochę <b>tłuszczyku...</b></xmp></p>
+
+		<p id="compareINPUT">&nbsp;</p>
+
+		<button type="button" onclick="document.getElementById('compareINPUT').innerHTML = '       Jestem magikiem, mam niewidzialne elementy oraz     trochę <b>tłuszczyku...</b>';">innerHTML</button>
+		<button type="button" onclick="document.getElementById('compareINPUT').textContent = '       Jestem magikiem, mam niewidzialne elementy oraz     trochę <b>tłuszczyku...</b>';">textContent</button>
+		<button type="button" onclick="document.getElementById('compareINPUT').innerText = '       Jestem magikiem, mam niewidzialne elementy oraz     trochę <b>tłuszczyku...</b>';">innerText</button>
+
+		<h4>Pobieranie treści</h4>
+
+		<p>Za pomocą trzech omawianych metod (przypisanych do przycisków poniżej) spróbujemy wyświetlić alert z poniższym tekstem:</p>
+		<p id="compare2">       Jestem magikiem, mam niewidzialne elementy oraz     trochę <b>tłuszczyku...</b></p>
+
+		<button type="button" onclick="alert(document.getElementById('compare2').innerHTML);">innerHTML</button>
+		<button type="button" onclick="alert(document.getElementById('compare2').textContent);">textContent</button>
+		<button type="button" onclick="alert(document.getElementById('compare2').innerText);">innerText</button>
 
 		<h2>Dostęp do stylów CSS oraz ich modyfikacja</h2>
 
@@ -296,7 +326,7 @@
 		<p id="p13">&nbsp;</p>
 		<button type="button" onclick="node5()">Pobierz następną markę motocykla</button>
 
-		<p>6. Za pomocą <span>previousElementSibling.innerHTM</span> wywołanego na elemencie listy KTM <span>document.getElementById("li3")</span> pobierzemy poprzednią markę motocykla.</p>
+		<p>6. Za pomocą <span>previousElementSibling.innerHTML</span> wywołanego na elemencie listy KTM <span>document.getElementById("li3")</span> pobierzemy poprzednią markę motocykla.</p>
 		<p id="p14">&nbsp;</p>
 		<button type="button" onclick="node6()">Pobierz poprzednią markę motocykla</button>
 

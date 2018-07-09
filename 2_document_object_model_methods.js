@@ -38,7 +38,7 @@ document.getElementsByTagName('#TAG'); //poprzez tą metodę odwołujemy się og
 var x = document.getElementsByTagName("p");
 y[2].innerHTML == "Lubię motocykle" // odnośimy się do zawartości 3 z kolei akapitu.
 
-document.querySelectorAll("znacznik.ID/className/typ/atrybut/war"); // metoda ta
+document.querySelectorAll(".ID/#className/typ/atrybut/war"); // metoda ta
 // pozwala dostać się do elementu HTML za pomoca formuly jaka jest używana
 // w plikach CSS, tj.:
 znacznikHTML(.ID/className/typ/atrybut/war) // ID, CLASSNAME podajemy jeżeli zostały one
@@ -50,6 +50,10 @@ p.intro
 // Będą one uporządkowane od wystepowania na stronie. Pierwszy znacznik bedzie
 // w tej liście pod indeksem 0. Należy pamiętać, że mimo zwracana jest nam lista
 // to nie możemy na niej wykonać metod takie jakie wykonujemy normalnie w kodzie JavaScript.
+// Należy dodać, że istnieje jeszcze metaoda związana z CSS:
+document.querySelector("znacznik.ID/className/typ/atrybut/war"); // jak widać różnica jest
+// taka, że nie zawiera słówka "All" w nazwie. A więc nie zwraca wszystkich elementów
+// pasujących do zapytania, tylko zwraca pierwszy element.
 
 document.jakiśTagKtóryJestObsługiwany // zwraca nam kolekcję / listę obiektów dzieci
 // wchodzących w skład danego obiektu będącego ich rodzicem. Na przykład jeżeli
@@ -76,13 +80,47 @@ var element1 = document.getElementById('#ID');
 var element2 = document.getElementsByClassName('#CLASS');
 var element3 = document.getElementsByTagName('#TAG');
 
-element1.innerHTML = // metoda innerHTML pozwala nam na umieszcze treści
+element1.innerHTML // metoda innerHTML pozwala nam na umieszcze treści
 // widocznej na stronie internetowej, dokładnie tak jakbyśmy umieścili treść pomiędzy
 // znacznikami w kodzie HTML, np.:
 <p id="x">Cześć jestem Tomek</p>
 document.getElementById("x").innerHTML = "Nie cześć i nie jestem Tomkiem"
 // Wkorzystywany właśnie po to aby dodać, zmienić jakiś tekst na strone poprzez wstrzyknięcie tego tekstu
 // za pomocą JavaScript i HTML DOM.
+// Oprócz tego, że możemy umieszczać jakiś tekst to rownież możemy go pobierac jeżeli już on istneieje.
+// Metoda ta powoduje, że jeżeli za jej pomocą będziemy umieszczać treść wraz ze znacznikami formatującymi
+// to zostaną zamienione na kod HTML i będą formatować tekst.
+// UWAGA !!!
+// Metoda zwraca całą zawartość znacznika HTML. A więc jeżeli naszą treść na stronie
+// pogrubimy poprzez użycie znacznika B, np:
+<p id="y">Cześć  mam na imię <b>Tomek</b></p>
+// i będziemy chcieli wyświetlić zawartość akapitu o ID "y" za pomocą powyższej metody,
+// to otrzymamy nastepujący ciąg znaków:
+// "Cześć  mam na imię <b>Tomek</b>" - czyli wszystko to co było pomiędzy znacznikiem akapitu P,
+// łącznie ze znacznikami B. Jeżeli w treści byłby też jakieś dodatkowe spacje to rownież zostałby zwrócone.
+// Podczas pobierania zawartości za pomocą innerHTML, należy zwrócić na to uwagę.
+// W przypadku pobierania zawartości znacznie lepsze są metody textContent bądź innerText.
+
+element1.textContent // metdoa textContent pozwala na pobranie zawartości i jej zwrócenie
+// w postaci czystego tekstu. Jeżeli w treści w kodzie HTML byłby użyte jakieś znaczniki formatujące treść
+// no zostałby one pominięte a zwrócony tylko tekst, np.:
+<p id="y">Cześć  mam na imię <b>Tomek</b></p>
+// to wykorzystując opisywaną metodę zwórcony zostanie nastepujący ciąg znaków:
+// "Cześć  mam na imię Tomek" - tylko czysty tekst znajdujący się pomiędzy znacznikiem akapitu P.
+// Metoda ta pozwala również na wstawianie tekstu jednak powoduje, że jeżeli za jej pomocą
+// będziemy umieszczać treść wraz ze znacznikami formatującymi to będą one potrakotowane jako
+// zwykły ciąg znaków a nie kod HTML i treść nie będzie formatowana.
+// UWAGA !!!
+// Pomimo, że textContent zwraca czysty tekst bez znaczników go formatujących to
+// nie pomija dodatkowych spacji. Należy na to zwrócic uwagę.
+// Aby już całkowicie wyeliminować ten problem to należy stosować metodę innerText.
+
+element1.innerText //metoda innerText pozwala na pobranie zawartości i zwrócenie jej
+// w najbardziej czystej postaci jaka jest możliwa. Bez tagów żadnych tagów HTML
+// formatujących tekst oraz bez dodatkowych spacji jeżeli zostały użyte, np.:
+<p id="y">yoyoyo    <b>Tomek</b>    !!!</p>
+// to wykorzystując opisaną metodę zwrócony zostanie nastepujuący ciąg znaków:
+// "yoyoyo Tomek !!!" - tylko czysy tekst bez tagów B oraz bez dodatkowych spacji.
 
 element2.attribute(.property) = nowa wartość // metoda ta pozwala dostać się do
 // właściwości jakie posiada znacznik HTML i manipulować nimi.
@@ -121,7 +159,7 @@ element1.style.property = new style // zmiana stylu, formatowania jakiegoś znac
 // UWAGA !!!
 // 	"property" jako właściwości stylów które możemy zmieniać róznią się nazwą w niektórych
 // 	przypadkach pomiędzy tym co jest w CSS a tym jakiej nazwy używamy w metodzie HTML DOM.
-// 	Na przykład w CSS jest "background-color", a w metodzie HTML DOM jest "backgroundColor" 
+// 	Na przykład w CSS jest "background-color", a w metodzie HTML DOM jest "backgroundColor"
 // Najpierw podajemy słówko "style", co znaczy, że chcemy ustawić formatowanie, a później
 // do jakiego elementu formatowania się odnosimy. Na przykład jeżeli chcemy
 // ustawić / zmienić kolor tła to formuła bedzie nastepjująca:
