@@ -68,6 +68,17 @@ document.forms["ID"] // zwróci kolekcję / liste obiektów wchodziących w skł
 // znacznika FORM.
 // ITD.
 
+// UWAGA!!! BARDZO WAŻNE !!!
+// Powyższe metody do odwoływania się do elementów można łączyć w potoki i dzięki temu,
+// na przykład jeżeli w jakimś DIV o ID=DIV1 mamy kilka elementów w tym dwa przyciski BUTTON
+// to aby zwrócić listę tylko z tymi przyciskami tworzymy potok z kilku równorzędnych metod.
+// Przykład:
+<div id="DIV1">
+	<button>OK</button>
+	<button>Anuluj</button>
+</div>
+document.getElementById("DIV1").getElementsByTagName("button")
+
 // Powyższe metody pozwalają na dostęp do elementów HTML, ale aby coś z nimi zrobić
 // musimy wywołać na nich kolejne metody.
 // Wywo0łujemy je tak samo jak w przypadku wywoływania metod na obiektach.
@@ -150,9 +161,10 @@ function myFunction() { // funkcja wywoływana przez atrybut w polu formularza
     x.value = x.value.toUpperCase(); // zamiana wartości wpisanej przez użytkownika
 		// czyli liter na wielkie
 }
-
-element3.setAttribute(#attribute, #value) // inny sposób na dostanie się do właściwośi
-// znacznika i dokonanie w nim jakiejś zmiany.
+element3.getAttribute(#attribute); // inny sposób na dostanie się do właściwości znacznika
+// i możliwości jej zwrócenia. W tym przypadku nie ma możliwości.
+element3.setAttribute(#attribute, #newValue); // inny sposób na dostanie się do właściwośi
+// znacznika i dokonywanie modyfikacji.
 
 element1.style.property = new style // zmiana stylu, formatowania jakiegoś znacznika HTML.
 // W ten sposób dostajemy się do formatowania CSS i zmieniamy, nadajemy itd kolejne formatowania.

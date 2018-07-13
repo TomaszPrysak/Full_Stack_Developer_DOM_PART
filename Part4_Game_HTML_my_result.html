@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Tic Tac Toe</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="Part4_Game_CSS_my_result.css">
+	</head>
+	<body>
+		<!-- Kontener wstępu -->
+		<div class="container">
+			<div class="jumbotron mt-4">
+				<h2 class="font-weight-light text-center">Ultra nowoczesne kółko i krzyżyk !</h1>
+				<p class="font-weight-light text-justify">Przed Tobą niepowtarzalna okazja, aby raz na zawsze zmienić swoje życie. A wszystko to za sprawą
+				poniższej najnowoczesniejszej wersji gry typu Kółko i Krzyżyk ! Zagrasz raz i nigdy nie będziesz chciał skończyc. Przygotuje zatem krate browarów i paluszki ;)
+				Zapewne zasadny znasz, a więc nie zwlekaj i przystąp do gry !</p>
+			</div>
+		</div>
+		<!-- Kontener menu -->
+		<div class="container">
+			<div class="menuBox jumbotron">
+				<h2 class="text-center">Menu</h2>
+				<!-- Kontener single-player -->
+				<div  id="singleBox" class="mt-2 p-2 border border-primary">
+					<!-- Button single-player -->
+					<button id="single" class="btn btn-block btn-primary mt-4 mb-4" type="button" name="button">Single-player</button>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-row justify-content-center">
+								<div class="col-auto">
+									<div class="input-group mb-4">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="inputGroup-sizing-default">Player</span>
+										</div>
+										<!-- Input Playere -->
+										<input disabled id="inputSingle" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="Player">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Kontener multi-player -->
+				<div id="multiBox" class="mt-2 p-2 border border-info">
+					<!-- Button Multi-player -->
+					<button id="multi" class="btn btn-block btn-info mt-4 mb-4" type="button" name="button">Multi-player</button>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-row justify-content-center">
+								<div class="col-auto">
+									<div class="input-group mb-4">
+									  <div class="input-group-prepend">
+									    <span class="input-group-text" id="inputGroup-sizing-default">Player One</span>
+									  </div>
+										<!-- Input Player One -->
+									  <input disabled id="inputMulti1" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="Player One">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-row justify-content-center">
+								<div class="col-auto">
+									<div class="input-group mb-4">
+									  <div class="input-group-prepend">
+									    <span class="kolor input-group-text" id="inputGroup-sizing-default">Player Two</span>
+									  </div>
+										<!-- Input Player Two -->
+									  <input disabled id="inputMulti2" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="Player Two">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Button Play -->
+				<a href="#game"><button disabled id="play" class="btn btn-block btn-success mt-4" type="button" name="button">PLAY</button></a>
+			</div>
+		</div>
+		<!-- Kontener planszy -->
+		<div id="game" class="container">
+			<div class="fieldBox jumbotron">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-row justify-content-center">
+							<div class="">
+								<ul class="list-inline">
+								  <li id="firstPlayer" class="list-inline-item font-weight-bold">First player</li>
+								  <li class="list-inline-item font-italic">VS.</li>
+								  <li id="secondPlayer" class="list-inline-item font-weight-bold">Second Player</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<table align="center">
+				  <tbody>
+				    <tr>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+							<td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+							<td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				</table>
+				<!-- Button Reset -->
+				<button id="reset" disabled class="btn btn-block btn-danger mt-4" type="button" name="button">RESET</button>
+				<!-- Button New Game -->
+				<button id="newGame" disabled class="btn btn-block btn-success mt-4" type="button" name="button">NEW GAME</button>
+			</div>
+		</div>
+		<script src="Part4_Game_JS_my_result.js" charset="utf-8"></script>
+	</body>
+</html>
