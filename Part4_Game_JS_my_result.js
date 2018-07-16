@@ -8,30 +8,36 @@ var resetButton = document.querySelector("#reset");
 var resetButton = document.querySelector("#reset");
 var newGameButton = document.querySelector("#newGame");
 var squares = document.querySelectorAll("td");
+var numPlayers;
+
+var moveCounter = 1;
 
 function singlePlayer(){
-	if (multiInput[0].disabled == false) {
-		alert('Wybrano rodzaj rozgrywki Multi-player')
-	}else{
-		singleInput.disabled = false;
-		playButton.disabled = false;
-		playButton.addEventListener("click", function(){prepareGame(1);});
-	}
+	alert("Opcja w trakcie rozwoju");
+	// if (multiInput[0].disabled == false) {
+	// 	alert('Wybrano rodzaj rozgrywki Multi-player')
+	// }else{
+	//  numPlayers = 1;
+	// 	singleInput.disabled = false;
+	// 	playButton.disabled = false;
+	// 	playButton.addEventListener("click", prepareGame;
+	// }
 }
 
 function multiPlayer(){
 	if (singleInput.disabled == false) {
 		alert('Wybrano rodzaj rozgrywki Single-player')
 	} else {
+		numPlayers = 2;
 		for (var i = 0; i < multiInput.length; i++) {
 			multiInput[i].disabled = false;
 		}
 		playButton.disabled = false;
-		playButton.addEventListener("click", function(){prepareGame(2);});
+		playButton.addEventListener("click", prepareGame);
 	}
 }
 
-function prepareGame(numPlayers){
+function prepareGame(){
 	playButton.disabled = true;
 	resetButton.disabled = false;
 	newGameButton.disabled = false;
@@ -41,20 +47,51 @@ function prepareGame(numPlayers){
 		document.querySelector("#firstPlayer").textContent = multiInput[0].value;
 		document.querySelector("#secondPlayer").textContent = "Computer";
 	} else {
-		document.querySelector("#firstPlayer").textContent = multiInput[0].value;
-		document.querySelector("#secondPlayer").textContent = multiInput[1].value;
+		document.querySelector("#firstPlayer").textContent = multiInput[0].value + " (X)";
+		document.querySelector("#secondPlayer").textContent = multiInput[1].value + " (O)";
 	}
 	for (var i = 0; i < squares.length; i++) {
-		squares[i].addEventListener("click",putMark);
+		squares[i].addEventListener("click", putMark);
 	}
 }
 
 function putMark(){
-	this.innerHTML = "X";
+	if (numPlayers == 1) {
+		alert("Opcja single-player nie jest jeszcze rozwinięta");
+	} else {
+		if (this.innerHTML == "") {
+			if ((moveCounter % 2) != 0) {
+				this.innerHTML = "X"
+				console.log(this.id);
+			} else {
+				this.innerHTML = "O"
+				console.log(this.id);
+			}
+			moveCounter += 1
+		} else {
+			alert("Nie możesz tutaj postawić znaku");
+		}
+	}
+	if (moveCounter == 10) {
+		alert("Koniec gry");
+	}
 }
 
 function nowaGra(){
-	console.log("Działa");
+	moveCounter = 1;
+	wyczysc();
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].removeEventListener("click", putMark);
+	};
+	playButton.disabled = true;
+	resetButton.disabled = true;
+	newGameButton.disabled = true;
+	for (var i = 0; i < multiInput.length; i++) {
+		multiInput[i].disabled = true;
+	}
+	document.querySelector("#firstPlayer").textContent = "First player";
+	document.querySelector("#secondPlayer").textContent = "Second Player";
+	// singleInput.disabled = true;
 }
 
 function wyczysc(){
@@ -62,4 +99,5 @@ function wyczysc(){
 	for (var i = 0; i < x; i++) {
 		document.querySelectorAll('td')[i].textContent = "";
 	}
+	moveCounter = 1;
 }
