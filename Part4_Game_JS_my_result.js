@@ -62,10 +62,8 @@ function putMark(){
 		if (this.innerHTML == "") {
 			if ((moveCounter % 2) != 0) {
 				this.innerHTML = "X"
-				console.log(this.id);
 			} else {
 				this.innerHTML = "O"
-				console.log(this.id);
 			}
 			moveCounter += 1
 		} else {
@@ -90,7 +88,9 @@ function nowaGra(){
 		multiInput[i].disabled = true;
 	}
 	document.querySelector("#firstPlayer").textContent = "First player";
+	multiInput[0].value = "Player One";
 	document.querySelector("#secondPlayer").textContent = "Second Player";
+	multiInput[1].value = "Player Two";
 	// singleInput.disabled = true;
 }
 
