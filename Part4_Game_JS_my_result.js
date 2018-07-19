@@ -10,6 +10,25 @@ var newGameButton = document.querySelector("#newGame");
 var squares = document.querySelectorAll("td");
 var numPlayers;
 
+// Poniżej tabele zawierające możliwości wygranej
+var row1 = [1,2,3];
+var row2 = [4,5,6];
+var row3 = [7,8,9];
+var col1 = [1,4,7];
+var col2 = [2,5,8];
+var col3 = [3,6,9];
+var across1 = [1, 5, 9];
+var across2 = [3, 5, 7];
+
+var rowColArray = [row1, row2, row3, col1, col2, col3, across1, across2];
+
+// Prosty sposób w JavaScript na sprawdzenie czy wartośc znajduje się w tabeli:
+// if (row3.indexOf(7) == "-1") {
+// 	console.log("nie ma w tabeli");
+// }else{
+// 	console.log(row1.indexOf(1));
+// }
+
 var moveCounter = 1;
 
 function singlePlayer(){
@@ -66,12 +85,46 @@ function putMark(){
 				this.innerHTML = "O"
 			}
 			moveCounter += 1
+			if (moveCounter > 5) {
+					if (checkWinner(this.innerHTML, this.id) == this.innerHTML) {
+						alert("wygrana " + this.innerHTML + "\nPo kliknięciu OK rozpocznie się nowa runda\nAby zagrać nowymi postaciami wybierz NEW GAME");
+						wyczysc();
+					}
+				}
+			// 	}
+			// setTimeout(function(){showWin()}, 3000);
+			// function showWin(x){
+			// 	if (moveCounter > 5) {
+			// 		if (checkWinner(this.innerHTML, this.id) == this.innerHTML) {
+			// 			alert("wygrana " + this.innerHTML);
+			// 			wyczysc();
+			// 		}
+			// 	}
+			// }
 		} else {
 			alert("Nie możesz tutaj postawić znaku");
 		}
 	}
 	if (moveCounter == 10) {
-		alert("Koniec gry");
+		alert("Remis\nPo kliknięciu OK rozpocznie się nowa runda\nAby zagrać nowymi postaciami wybierz NEW GAME");
+		wyczysc();
+	}
+}
+
+function checkWinner(mark, id){
+	var intID = parseInt(id)
+	for (variable1 of rowColArray) {
+		if (variable1.indexOf(intID) != "-1") {
+			var markCounter = 0;
+			for (variable2 of variable1) {
+				if (document.getElementById(variable2).innerHTML == mark) {
+					markCounter += 1;
+				}
+				if (markCounter == 3) {
+					return mark;
+				}
+			}
+		}
 	}
 }
 

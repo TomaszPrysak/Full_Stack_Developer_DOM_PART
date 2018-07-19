@@ -70,8 +70,8 @@ document.getElementById("btn").onclick = function(){displayDate()}; // dostępo 
 // przy użyciu metody "onclick" dopisanie mu atrybutu zdarzenia.
 // albo:
 document.getElementById("btn").onclick = displayDate; // należy zwrócić uwagę, że
-// w tym przypadku nie mamy nawiasku, a więc nie możemy wywoływac funkcji z argumentami.
-// aby to zrobić musimy użyć składni ten z: function(){functionName()};
+// w tym przypadku nie mamy nawiasu, a więc nie możemy wywoływac funkcji z argumentami.
+// aby to zrobić musimy użyć składni ten z: function(){functionName(arg1,arg2)};
 // JAK WIDAĆ ROBIMY TO POŚREDNIO.
 function displayDate(){ // funkcja wywoływana w momencie kliknięcia w przycisk
 	document.getElementById('data').innerHTML = Date(); // umieszcze w pustym akapicie
